@@ -1,0 +1,17 @@
+{
+  "name": "Nguyên Thức",
+   "short_name": "ngthuc.com",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "Scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "src/public/resources/images/logo-without-name.png",
+      "sizes": "132x132",
+      "type": "image/png"
+    },
+  ],
+  "splash_pages": null
+}
