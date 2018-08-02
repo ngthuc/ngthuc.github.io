@@ -122,7 +122,7 @@ const PRECACHE_URLS = [
     'src/public/resources/vendor/sinister/sinister.css',
     'src/public/resources/css/style.min.css',
     'src/public/resources/vendor/bootstrap-3.3.7/dist/js/bootstrap.min.js',
-    'src/public/resources/vendor/jquery-3.3.1/dist/jquery.min.js',
+    'src/public/resources/vendor/jquery-3.3.1/dist/jquery.js',
     'src/public/resources/js/canvas-header.js',
     'src/public/resources/js/rAF.js',
     'sw_reg.js',
