@@ -27,7 +27,7 @@
 //   }
 if ('serviceWorker' in navigator) {
   // navigator.serviceWorker.register('sw.js')
-  navigator.serviceWorker.register('service-worker.js')
+  navigator.serviceWorker.register('sw.js')
   .then(reg => {
     console.log('Registered service worker');
   }).catch(err => {
