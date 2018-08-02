@@ -6,11 +6,37 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "icons": [
-    {
-    "src": "src/public/resources/images/logo-without-name.png",
-    "sizes": "132x132",
-    "type": "image/png"
+  "icons":  [
+      {
+        "src": "src/public/resources/images/logo/logo-without-name-48x48.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+
+      {
+        "src": "src/public/resources/images/logo/logo-without-name-72x72.png",
+        "type": "image/png",
+        "sizes": "72x72"
+      },
+      {
+        "src": "src/public/resources/images/logo/logo-without-name-96x96.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "src/public/resources/images/logo/logo-without-name-144x144.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      },
+      {
+        "src": "src/public/resources/images/logo/logo-without-name-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "src/public/resources/images/logo/logo-without-name-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
     }
   ],
   "splash_pages": null
