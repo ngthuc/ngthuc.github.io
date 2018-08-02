@@ -2,7 +2,7 @@
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-      navigator.serviceWorker.register('service-worker.js').then(function(reg) {
+      navigator.serviceWorker.register('service_worker.js').then(function(reg) {
         reg.onupdatefound = function() {
           var installingWorker = reg.installing;
           installingWorker.onstatechange = function() {

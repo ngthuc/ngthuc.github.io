@@ -22,6 +22,12 @@ var preCacheSrc = [
     'src/public/resources/images/lastwork/nckh2017.png',
     'src/public/resources/images/lastwork/vienquyhoach.png',
     'src/public/resources/images/header.jpg',
+    'src/public/resources/images/logo/logo-without-name-48x48.png',
+    'src/public/resources/images/logo/logo-without-name-72x72.png',
+    'src/public/resources/images/logo/logo-without-name-96x96.png',
+    'src/public/resources/images/logo/logo-without-name-144x144.png',
+    'src/public/resources/images/logo/logo-without-name-196x196.png',
+    'src/public/resources/images/logo/logo-without-name-512x512.png',
   ...
 ];
 // precache tài nguyên khi được đăng ký bởi sw_reg.js
