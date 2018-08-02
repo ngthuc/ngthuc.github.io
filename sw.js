@@ -126,6 +126,8 @@ const PRECACHE_URLS = [
     'src/public/resources/js/canvas-header.js',
     'src/public/resources/js/rAF.js',
     'sw_reg.js',
+    'index.html',
+    '/',
     'src/public/resources/vendor/wow/dist/wow.min.js',
     'src/public/resources/vendor/waypoints/lib/jquery.waypoints.min.js',
     'src/public/resources/vendor/jQuery-One-Page-Nav/jquery.nav.js',
