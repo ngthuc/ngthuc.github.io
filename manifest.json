@@ -5,7 +5,7 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "/#homepage",
   "icons":  [
       {
         "src": "src/public/resources/images/logo/logo-without-name-48x48.png",
