@@ -5,19 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#EEEEEE">
   <link rel="icon" href="/src/public/resources/images/logo/logo-without-name.png">
-  <!-- Add to home screen for Safari on iOS-->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="ngthuc.com">
-  <link rel="apple-touch-icon" href="/src/public/resources/images/logo/logo-without-name.png">
-  <!-- Add to home screen for Windows-->
-  <meta name="msapplication-TileImage" content="/src/public/resources/images/logo/logo-without-name.png">
-  <meta name="msapplication-TileColor" content="#000000">
-  <link rel="manifest" href="/manifest.json">
 
   <meta name="keywords" content="NgThuc's Website, ngthuc.com, Nguyên Thức, ngthuc, Lê Nguyên Thức, lê nguyên thức, nguyên thức, Nguyên Thức là ai?, nguyên thức là ai?, lê nguyên thức là ai?, Lê Nguyên Thức là ai?">
   <meta name="description" content="Ngthuc's Resume and Portfolio">
@@ -64,51 +52,6 @@
     ga('send', 'pageview');
   </script>
   <!--Google Analyst End-->
-
-  <!-- Register Service Worker -->
-  <!-- <script src="sw_reg.js"></script> -->
-  <script type="text/javascript">
-  // Thực thi như js phía client thông thường
-  if (navigator.serviceWorker) {
-    // navigator.serviceWorker.register('/sw.js').then(function(registration) {
-    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-      console.log('ServiceWorker registration successful with scope:',  registration.scope);
-    }).catch(function(error) {
-      console.log('ServiceWorker registration failed:', error);
-    });
-  }
-  </script>
-  <!-- Registed Service Worker -->
-
-  <!-- Add to Home Screen -->
-  <!-- <script type="text/javascript">
-    let deferredPrompt;
-
-      window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      deferredPrompt = e;
-    });
-
-    btnAdd.addEventListener('click', (e) => {
-    // hide our user interface that shows our A2HS button
-    btnAdd.style.display = 'none';
-    // Show the prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice
-      .then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          console.log('User dismissed the A2HS prompt');
-        }
-        deferredPrompt = null;
-      });
-  });
-  </script> -->
-  <!-- Added to Home Screen -->
 </head>
 
 <body>
@@ -335,9 +278,9 @@
             <div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.6s">
               <div class="ImageWrapper">
                 <a href="http://daydanthanhtuan.com/" aria-label="daydanthanhtuan" target="_blank" rel="noreferrer">
-                                <img class="img-responsive" src="/src/public/resources/images/lastwork/daydanthanhtuan.png"  alt="">
-                                <div class="PStyleHe"></div>
-                            </a>
+                  <img class="img-responsive" src="/src/public/resources/images/lastwork/daydanthanhtuan.png"  alt="">
+                  <div class="PStyleHe"></div>
+                </a>
               </div>
             </div>
           </div>
@@ -345,9 +288,9 @@
             <div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.8s">
               <div class="ImageWrapper">
                 <a href="http://tuongminhanh.com.vn/" aria-label="tuongminhanh" target="_blank" rel="noreferrer">
-                                <img class="img-responsive" src="/src/public/resources/images/lastwork/tuongminhanh.png"  alt="">
-                                <div class="PStyleHe"></div>
-                            </a>
+                  <img class="img-responsive" src="/src/public/resources/images/lastwork/tuongminhanh.png"  alt="">
+                  <div class="PStyleHe"></div>
+                </a>
               </div>
             </div>
           </div>
@@ -355,9 +298,9 @@
             <div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.9s">
               <div class="ImageWrapper">
                 <a href="#" aria-label="nckh2017" target="_blank">
-                                <img class="img-responsive" src="/src/public/resources/images/lastwork/nckh2017.png"  alt="">
-                                <div class="PStyleHe"></div>
-                            </a>
+                  <img class="img-responsive" src="/src/public/resources/images/lastwork/nckh2017.png"  alt="">
+                  <div class="PStyleHe"></div>
+                </a>
               </div>
             </div>
           </div>
@@ -365,9 +308,9 @@
             <div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.7s">
               <div class="ImageWrapper">
                 <a href="https://www.vienquyhoach.cantho.gov.vn/" aria-label="vienquyhoach" target="_blank" rel="noreferrer">
-                                <img class="img-responsive" src="/src/public/resources/images/lastwork/vienquyhoach.png"  alt="">
-                                <div class="PStyleHe"></div>
-                            </a>
+                  <img class="img-responsive" src="/src/public/resources/images/lastwork/vienquyhoach.png"  alt="">
+                  <div class="PStyleHe"></div>
+                </a>
               </div>
             </div>
           </div>
