@@ -54,7 +54,7 @@
     @media only screen and (min-width: 320px) {
       .modal-custom {
           width: 320px;
-          height: 300px;
+          height: 320px;
       }
     }
 
@@ -130,7 +130,7 @@
         'key': 'vienquyhoach',
         'name': 'Can Tho Planning Institute, Can Tho City Construction Department',
         'url': 'https://www.vienquyhoach.cantho.gov.vn/',
-        'url-status': 'suspend',
+        'url-status': 'active',
         'time': 'Dec 2017 - Feb 2018',
         'position': 'Project Manager. Deployer and Maintainer.'
       }
@@ -531,9 +531,9 @@
   <!-- <script src="//cdn.muicss.com/mui-0.10.0/extra/mui-combined.min.js"></script> -->
 
   <script type="text/javascript">
-    var template = "";
+    var template_small = "";
     for (var k in lastwork) {
-      template += '<div class="col-md-3 col-sm-3 col-xs-6">' +
+      template_small += '<div class="col-md-3 col-sm-3 col-xs-6">' +
         '<div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.6s">' +
           '<div class="ImageWrapper" onclick="activateModal(' + "'" + lastwork[k]['key'] + "'" + ')">' +
               '<img class="img-responsive" src="src/public/resources/images/lastwork/small/' + lastwork[k]['key'] + '.png"  alt="">' +
@@ -542,8 +542,8 @@
         '</div>' +
       '</div>';
     }
-    console.log(template);
-    document.getElementById("lastwork").innerHTML = template;
+    console.log(template_small);
+    document.getElementById("lastwork").innerHTML = template_small;
   </script>
 
   <!-- WOW.js Init -->
@@ -551,62 +551,122 @@
 
   <!-- Material UI settings -->
   <script>
+    function getTemplateModal(project, arr) {
+      return '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">' +
+        '<img class="img-responsive" src="src/public/resources/images/lastwork/big/' + project + '.png"  alt="">' +
+      '</div>' +
+      '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">' +
+        '<span><strong>Project: </strong> ' + arr[project]['name'] + '</span>' +
+        '<span><strong>URL: </strong> ' + ((arr[project]['url'] != null) ? arr[project]['url'] : '') + ((arr[project]['url-status'] != 'active') ? arr[project]['url-status'] : '') + '</span>' +
+        '<span><strong>Time: </strong> ' + arr[project]['time'] + '</span>' +
+        '<span><strong>Position: </strong> ' + arr[project]['position'] + '</span>' +
+      '</div>';
+    }
+
     function activateModal(project) {
       // initialize modal element
       var modalEl = document.createElement('div');
-      modalEl.className = 'modal-custom';
+      modalEl.className = 'row modal-custom';
+      modalEl.id = 'lastwork-modal';
+
+      // add image
+      var div_img = document.createElement('div');
+      div_img.className = 'col-lg-12 col-md-12 col-sm-12 col-xs-12';
+      div_img.id = 'image';
 
       var img = document.createElement('img');
-          img.src = 'https://ngthuc.com/src/public/resources/images/lastwork/big/' + project + '.png';
+      img.src = 'https://ngthuc.com/src/public/resources/images/lastwork/big/' + project + '.png';
 
-      modalEl.appendChild(img);
+      div_img.appendChild(img);
 
-      var p = document.createElement('p');
-      var br = document.createElement('br');
-      var b = document.createElement('b');
-      switch (project) {
-        case 'daydanthanhtuan':
-          prjNameLbl = document.createTextNode('Project:');
-          b.appendChild(prjNameLbl);
-          p.appendChild(b);
-          prjName = document.createTextNode('Day dan Thanh Tuan, Hau Giang');
-          p.appendChild(prjName);
-          p.appendChild(br);
+      // add info
+      var div_info = document.createElement('div');
+      div_info.className = 'col-lg-12 col-md-12 col-sm-12 col-xs-12 row';
+      div_info.style.margin = '10px auto 10px auto';
+      div_img.id = 'info';
 
-          urlLbl = document.createTextNode('URL:');
-          b.appendChild(urlLbl);
-          p.appendChild(b);
-          url = document.createTextNode('http://daydanthanhtuan.com (suspend)');
-          p.appendChild(url);
-          p.appendChild(br);
+      // name
+      var spanProjectName = document.createElement('div');
+      spanProjectName.className = 'project-name';
 
-          timeLbl = document.createTextNode('Time:');
-          b.appendChild(timeLbl);
-          p.appendChild(b);
-          time = document.createTextNode('Aug 2016 - Sep 2016');
-          p.appendChild(time);
-          p.appendChild(br);
+      var strongProjectNameLabel = document.createElement('strong');
+      strongProjectNameLabel.id = 'project-name-label';
 
-          positionLbl = document.createTextNode('Position:');
-          b.appendChild(positionLbl);
-          p.appendChild(b);
-          position = document.createTextNode('Project Manager. Fullstack Developer.');
-          p.appendChild(position);
-          p.appendChild(br);
-          break;
-        case 'tuongminhanh':
-          alert('Cty BVTV Tuong Minh Anh, TPHCM');
-          break;
-        case 'nckh2017':
-          alert('Nghien cuu khoa hoc sinh vien 2017, DHCT');
-          break;
-        case 'vienquyhoach':
-          alert('Vien Quy hoach Xay dung, So Xay dung TP Can Tho');
-          break;
-        default:
-          alert('Du an?');
-      }
-      modalEl.appendChild(p);
+      var projectNameLabel = document.createTextNode("Project: ");
+
+      strongProjectNameLabel.appendChild(projectNameLabel);
+
+      var projectNameText = document.createTextNode(lastwork[project]['name']);
+
+      spanProjectName.appendChild(strongProjectNameLabel);
+      spanProjectName.appendChild(projectNameText);
+
+      // url
+      var spanUrl = document.createElement('div');
+      spanUrl.className = 'url';
+
+      var strongUrlLabel = document.createElement('strong');
+      strongUrlLabel.id = 'url-label';
+
+      var urlLabel = document.createTextNode("URL: ");
+
+      strongUrlLabel.appendChild(urlLabel);
+
+      if (lastwork[project]['url'] != null) {
+        var a = document.createElement('a');
+        a.appendChild(document.createTextNode(lastwork[project]['url']));
+        a.setAttribute('href', lastwork[project]['url']);
+        a.setAttribute('target', '_blank');
+      } else a = document.createTextNode('');
+
+      if (lastwork[project]['url-status'] != 'active') {
+        var status = document.createTextNode(' (' + lastwork[project]['url-status'] + ')');
+      } else status = document.createTextNode('');
+
+      spanUrl.appendChild(strongUrlLabel);
+      spanUrl.appendChild(a);
+      spanUrl.appendChild(status);
+
+      // time
+      var spanTime = document.createElement('div');
+      spanTime.className = 'time';
+
+      var strongTimeLabel = document.createElement('strong');
+      strongTimeLabel.id = 'time-label';
+
+      var timeLabel = document.createTextNode("Time: ");
+
+      strongTimeLabel.appendChild(timeLabel);
+
+      var timeText = document.createTextNode(lastwork[project]['time']);
+
+      spanTime.appendChild(strongTimeLabel);
+      spanTime.appendChild(timeText);
+
+      // position
+      var spanPosition = document.createElement('div');
+      spanPosition.className = 'position';
+
+      var strongPositionLabel = document.createElement('strong');
+      strongPositionLabel.id = 'position-label';
+
+      var positionLabel = document.createTextNode("Position: ");
+
+      strongPositionLabel.appendChild(positionLabel);
+
+      var positionText = document.createTextNode(lastwork[project]['position']);
+
+      spanPosition.appendChild(strongPositionLabel);
+      spanPosition.appendChild(positionText);
+
+      div_info.appendChild(spanProjectName);
+      div_info.appendChild(spanUrl);
+      div_info.appendChild(spanTime);
+      div_info.appendChild(spanPosition);
+
+      // add image and info
+      modalEl.appendChild(div_img);
+      modalEl.appendChild(div_info);
 
       // show modal
       mui.overlay('on', modalEl);
