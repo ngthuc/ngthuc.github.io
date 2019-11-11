@@ -98,6 +98,44 @@
     ga('send', 'pageview');
   </script>
   <!--Google Analyst End-->
+
+  <!-- Last work info init -->
+  <script type="text/javascript">
+    var lastwork = {
+      'daydanthanhtuan': {
+        'key': 'daydanthanhtuan',
+        'name': 'Thanh Tuan Musician Training Center, Hau Giang',
+        'url': 'http://daydanthanhtuan.com/',
+        'url-status': 'suspend',
+        'time': 'Aug 2016 - Sep 2016',
+        'position': 'Project Manager. Fullstack Developer.'
+      },
+      'tuongminhanh': {
+        'key': 'tuongminhanh',
+        'name': 'Tuong Minh Anh Ltd. Co, HCMC',
+        'url': 'http://tuongminhanh.com.vn/',
+        'url-status': 'active',
+        'time': 'Mar 2017 - Oct 2017',
+        'position': 'Deployer and Maintainer.'
+      },
+      'nckh2017': {
+        'key': 'nckh2017',
+        'name': 'Student Sciences Research 2017, Can Tho University',
+        'url': null,
+        'url-status': 'none',
+        'time': 'Jun 2017 - Dec 2017',
+        'position': 'Project Manager. Fullstack Developer.'
+      },
+      'vienquyhoach': {
+        'key': 'vienquyhoach',
+        'name': 'Can Tho Planning Institute, Can Tho City Construction Department',
+        'url': 'https://www.vienquyhoach.cantho.gov.vn/',
+        'url-status': 'suspend',
+        'time': 'Dec 2017 - Feb 2018',
+        'position': 'Project Manager. Deployer and Maintainer.'
+      }
+    };
+  </script>
 </head>
 
 <body>
@@ -227,7 +265,7 @@
                   <p class="heading">Can Tho University Student Sciences Research</p>
                   <p class="time">Jun 2017 - Dec 2017</p>
                   <p class="desc">
-                    Project Manager and Web/API module development to sync with RFID Reader. Using CodeIgniter, jQuery, JSON.
+                    Project Manager. Using RFID technology, CodeIgniter, jQuery, JSON.
                   </p>
                 </div>
                 <div class="ex-block-item">
@@ -320,14 +358,14 @@
         <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">Collection of website I was built</p>
       </div>
       <div class="lw-body">
-        <div class="row">
-          <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="row" id="lastwork">
+          <!-- <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.6s">
               <div class="ImageWrapper" onclick="activateModal('daydanthanhtuan')">
-                <!-- <a href="#" aria-label="daydanthanhtuan" target="_blank" rel="noreferrer"> -->
+                <a href="#" aria-label="daydanthanhtuan" target="_blank" rel="noreferrer">
                   <img class="img-responsive" src="src/public/resources/images/lastwork/small/daydanthanhtuan.png"  alt="">
                   <div class="PStyleHe"></div>
-                <!-- </a> -->
+                </a>
               </div>
             </div>
           </div>
@@ -335,10 +373,10 @@
           <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.8s">
               <div class="ImageWrapper" onclick="activateModal('tuongminhanh')">
-                <!-- <a href="http://tuongminhanh.com.vn/" aria-label="tuongminhanh" target="_blank" rel="noreferrer"> -->
+                <a href="http://tuongminhanh.com.vn/" aria-label="tuongminhanh" target="_blank" rel="noreferrer">
                   <img class="img-responsive" src="src/public/resources/images/lastwork/small/tuongminhanh.png"  alt="">
                   <div class="PStyleHe"></div>
-                <!-- </a> -->
+                </a>
               </div>
             </div>
           </div>
@@ -346,10 +384,10 @@
           <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.9s">
               <div class="ImageWrapper" onclick="activateModal('nckh2017')">
-                <!-- <a href="#" aria-label="nckh2017" target="_blank"> -->
+                <a href="#" aria-label="nckh2017" target="_blank">
                   <img class="img-responsive" src="src/public/resources/images/lastwork/small/nckh2017.png"  alt="">
                   <div class="PStyleHe"></div>
-                <!-- </a> -->
+                </a>
               </div>
             </div>
           </div>
@@ -357,13 +395,13 @@
           <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.7s">
               <div class="ImageWrapper" onclick="activateModal('vienquyhoach')">
-                <!-- <a href="https://www.vienquyhoach.cantho.gov.vn/" aria-label="vienquyhoach" target="_blank" rel="noreferrer"> -->
+                <a href="https://www.vienquyhoach.cantho.gov.vn/" aria-label="vienquyhoach" target="_blank" rel="noreferrer">
                   <img class="img-responsive" src="src/public/resources/images/lastwork/small/vienquyhoach.png"  alt="">
                   <div class="PStyleHe"></div>
-                <!-- </a> -->
+                </a>
               </div>
             </div>
-          </div>
+          </div> -->
           <!--<div class="col-md-3 col-sm-3 col-xs-6">-->
           <!--    <div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="1.0s" >-->
           <!--        <div class="ImageWrapper">-->
@@ -492,6 +530,22 @@
   <script src="//cdn.muicss.com/mui-0.10.0/extra/mui-combined.js"></script>
   <!-- <script src="//cdn.muicss.com/mui-0.10.0/extra/mui-combined.min.js"></script> -->
 
+  <script type="text/javascript">
+    var template = "";
+    for (var k in lastwork) {
+      template += '<div class="col-md-3 col-sm-3 col-xs-6">' +
+        '<div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.6s">' +
+          '<div class="ImageWrapper" onclick="activateModal(' + "'" + lastwork[k]['key'] + "'" + ')">' +
+              '<img class="img-responsive" src="src/public/resources/images/lastwork/small/' + lastwork[k]['key'] + '.png"  alt="">' +
+              '<div class="PStyleHe"></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }
+    console.log(template);
+    document.getElementById("lastwork").innerHTML = template;
+  </script>
+
   <!-- WOW.js Init -->
   <script> new WOW().init(); </script>
 
@@ -501,11 +555,11 @@
       // initialize modal element
       var modalEl = document.createElement('div');
       modalEl.className = 'modal-custom';
-      
-      var img = document.createElement('img'); 
-          img.src = 'https://ngthuc.com/src/public/resources/images/lastwork/big/' + project + '.png'; 
 
-      modalEl.appendChild(img); 
+      var img = document.createElement('img');
+          img.src = 'https://ngthuc.com/src/public/resources/images/lastwork/big/' + project + '.png';
+
+      modalEl.appendChild(img);
 
       var p = document.createElement('p');
       var br = document.createElement('br');
