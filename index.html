@@ -36,12 +36,49 @@
 
   <link rel="stylesheet" type="text/css" href="src/public/resources/css/style.min.css">
 
-  <!-- <link href="//cdn.muicss.com/mui-0.10.0/extra/mui-noglobals.css" rel="stylesheet" type="text/css" /> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
+
+  <link href="//cdn.muicss.com/mui-0.10.0/extra/mui-noglobals.css" rel="stylesheet" type="text/css" />
   <!-- <link href="//cdn.muicss.com/mui-0.10.0/extra/mui-noglobals.min.css" rel="stylesheet" type="text/css" /> -->
-  <!-- <link href="//cdn.muicss.com/mui-0.10.0/extra/mui-noglobals-rtl.css" rel="stylesheet" type="text/css" /> -->
+  <link href="//cdn.muicss.com/mui-0.10.0/extra/mui-noglobals-rtl.css" rel="stylesheet" type="text/css" />
   <!-- <link href="//cdn.muicss.com/mui-0.10.0/extra/mui-noglobals-rtl.min.css" rel="stylesheet" type="text/css" /> -->
-  <!-- <link href="//cdn.muicss.com/mui-0.10.0/extra/mui-colors.css" rel="stylesheet" type="text/css" /> -->
+  <link href="//cdn.muicss.com/mui-0.10.0/extra/mui-colors.css" rel="stylesheet" type="text/css" />
   <!-- <link href="//cdn.muicss.com/mui-0.10.0/extra/mui-colors.min.css" rel="stylesheet" type="text/css" /> -->
+
+  <style>
+    .modal-custom {
+        margin: 100px auto;
+        background-color: #fff;
+    }
+
+    @media only screen and (min-width: 320px) {
+      .modal-custom {
+          width: 320px;
+          height: 300px;
+      }
+    }
+
+    @media only screen and (min-width: 600px) {
+      .modal-custom {
+          width: 500px;
+          height: 500px;
+      }
+    }
+
+    @media only screen and (min-width: 990px) {
+      .modal-custom {
+          width: 600px;
+          height: 550px;
+      }
+    }
+
+    @media only screen and (min-width: 1200px) {
+      .modal-custom {
+          width: 800px;
+          height: 600px;
+      }
+    }
+  </style>
 
   <!--Google Analyst-->
   <script>
@@ -449,25 +486,59 @@
   <script type="text/javascript" src="src/public/resources/vendor/jQuery-One-Page-Nav/jquery.nav.js"></script>
   <script type="text/javascript" src="src/public/resources/js/custom.min.js"></script>
 
-  <!-- <script src="//cdn.muicss.com/mui-0.10.0/extra/mui-combined.js"></script> -->
+  <!-- jQuery Modal -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script> -->
+
+  <script src="//cdn.muicss.com/mui-0.10.0/extra/mui-combined.js"></script>
   <!-- <script src="//cdn.muicss.com/mui-0.10.0/extra/mui-combined.min.js"></script> -->
 
   <!-- WOW.js Init -->
   <script> new WOW().init(); </script>
 
   <!-- Material UI settings -->
-  <!-- <script>
+  <script>
     function activateModal(project) {
       // initialize modal element
       var modalEl = document.createElement('div');
-      modalEl.style.width = '400px';
-      modalEl.style.height = '300px';
-      modalEl.style.margin = '100px auto';
-      modalEl.style.backgroundColor = '#fff';
+      modalEl.className = 'modal-custom';
+      
+      var img = document.createElement('img'); 
+          img.src = 'https://ngthuc.com/src/public/resources/images/lastwork/big/' + project + '.png'; 
 
+      modalEl.appendChild(img); 
+
+      var p = document.createElement('p');
+      var br = document.createElement('br');
+      var b = document.createElement('b');
       switch (project) {
         case 'daydanthanhtuan':
-          alert('Day dan Thanh Tuan, Hau Giang');
+          prjNameLbl = document.createTextNode('Project:');
+          b.appendChild(prjNameLbl);
+          p.appendChild(b);
+          prjName = document.createTextNode('Day dan Thanh Tuan, Hau Giang');
+          p.appendChild(prjName);
+          p.appendChild(br);
+
+          urlLbl = document.createTextNode('URL:');
+          b.appendChild(urlLbl);
+          p.appendChild(b);
+          url = document.createTextNode('http://daydanthanhtuan.com (suspend)');
+          p.appendChild(url);
+          p.appendChild(br);
+
+          timeLbl = document.createTextNode('Time:');
+          b.appendChild(timeLbl);
+          p.appendChild(b);
+          time = document.createTextNode('Aug 2016 - Sep 2016');
+          p.appendChild(time);
+          p.appendChild(br);
+
+          positionLbl = document.createTextNode('Position:');
+          b.appendChild(positionLbl);
+          p.appendChild(b);
+          position = document.createTextNode('Project Manager. Fullstack Developer.');
+          p.appendChild(position);
+          p.appendChild(br);
           break;
         case 'tuongminhanh':
           alert('Cty BVTV Tuong Minh Anh, TPHCM');
@@ -481,11 +552,12 @@
         default:
           alert('Du an?');
       }
+      modalEl.appendChild(p);
 
       // show modal
       mui.overlay('on', modalEl);
     }
-  </script> -->
+  </script>
 
 </body>
 
