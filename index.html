@@ -22,7 +22,7 @@
 
   <title>Nguyên Thức</title>
 
-  <base href="https://ngthuc.com/">
+  <!-- <base href="https://ngthuc.com/"> -->
 
   <link rel="icon shortcut" href="src/public/resources/images/logo/logo-without-name.png">
 
@@ -97,6 +97,8 @@
   </script>
   <!--Google Analyst End-->
 
+  <script src="src/public/resources/js/images.js" charset="utf-8"></script>
+
   <!-- Last work info init -->
   <script type="text/javascript">
     var lastwork = {
@@ -162,7 +164,7 @@
         'time': 'Jun 2018 - Dec 2018',
         'category': '201812',
         'position': 'Document Writer.'
-      },      
+      },
       'luanvan2018': {
         'key': 'luanvan2018',
         'name': 'Graduation Thesis - Software Engineering, Can Tho University',
@@ -473,10 +475,18 @@
   <script type="text/javascript">
     var template_small = "";
     for (var k in lastwork) {
+      // template_small += '<div class="col-md-3 col-sm-3 col-xs-6">' +
+      //   '<div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.6s">' +
+      //     '<div class="ImageWrapper" onclick="activateModal(' + "'" + lastwork[k]['key'] + "'" + ')">' +
+      //         '<img class="img-responsive" src="src/public/resources/images/lastwork/small/' + lastwork[k]['key'] + '.png"  alt="">' +
+      //         '<div class="PStyleHe"></div>' +
+      //     '</div>' +
+      //   '</div>' +
+      // '</div>';
       template_small += '<div class="col-md-3 col-sm-3 col-xs-6">' +
         '<div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.6s">' +
           '<div class="ImageWrapper" onclick="activateModal(' + "'" + lastwork[k]['key'] + "'" + ')">' +
-              '<img class="img-responsive" src="src/public/resources/images/lastwork/small/' + lastwork[k]['key'] + '.png"  alt="">' +
+              '<img class="img-responsive" src="' + images_js['images'][k]['small-base64'] + '"  alt="">' +
               '<div class="PStyleHe"></div>' +
           '</div>' +
         '</div>' +
@@ -503,7 +513,8 @@
       div_img.id = 'image';
 
       var img = document.createElement('img');
-      img.src = 'src/public/resources/images/lastwork/big/' + project + '.png';
+      // img.src = 'src/public/resources/images/lastwork/big/' + project + '.png';
+      img.src = images_js['images'][project]['big-base64'];
 
       div_img.appendChild(img);
 
