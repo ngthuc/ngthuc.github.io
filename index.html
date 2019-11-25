@@ -26,13 +26,9 @@
 
   <link rel="icon shortcut" href="src/public/resources/images/logo/logo-without-name.png">
 
-  <!-- <link href="src/public/resources/vendor/google-fonts/material-icons.css" rel="stylesheet preload">
-  <link href='src/public/resources/vendor/google-fonts/raleway.css' rel='stylesheet preload' type='text/css'>
-  <link href='src/public/resources/vendor/google-fonts/roboto.css' rel='stylesheet preload' type='text/css'> -->
-  <link rel="stylesheet" type="text/css" href="src/public/resources/vendor/bootstrap-3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="src/public/resources/vendor/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="src/public/resources/vendor/animate.css/animate.min.css">
-  <link rel="stylesheet" type="text/css" href="src/public/resources/vendor/sinister/sinister.css">
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
+  <link rel="stylesheet" type="text/css" href="node_modules/animate.css/animate.min.css">
 
   <link rel="stylesheet" type="text/css" href="src/public/resources/css/style.min.css">
 
@@ -40,7 +36,7 @@
   <link rel="stylesheet" href="src/public/resources/css/mui-noglobals-rtl.min.css" type="text/css" />
   <link rel="stylesheet" href="src/public/resources/css/mui-colors.min.css" type="text/css" />
 
-  <style rel="preload">
+  <style media="screen" rel="preload">
     #homepage {
       /* background-image:url(src/public/resources/images/header.webp); */
       background-image:url(src/public/resources/images/header2.webp);
@@ -50,6 +46,17 @@
         margin: 100px auto;
         background-color: #fff;
     }
+
+    .fixed-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #282D39;
+    }
+
+    /* .sticky + .content {
+      padding-top: 102px;
+    } */
 
     @media only screen and (min-width: 320px) {
       .modal-custom {
@@ -78,9 +85,7 @@
           height: 550px;
       }
     }
-  </style>
 
-  <style media="screen" rel="preload">
     /* cyrillic-ext */
     @font-face {
       font-family: 'Roboto';
@@ -197,91 +202,7 @@
   <!--Google Analyst End-->
 
   <!-- Last work info init -->
-  <script type="text/javascript">
-    var lastwork = {
-      'daydanthanhtuan': {
-        'key': 'daydanthanhtuan',
-        'name': 'Thanh Tuan Musician Training Center, Hau Giang',
-        'url': 'http://daydanthanhtuan.com/',
-        'url-status': 'suspend',
-        'time': 'Aug 2016 - Sep 2016',
-        'category': '201609',
-        'position': 'Project Manager. Fullstack Developer.'
-      },
-      'tuongminhanh': {
-        'key': 'tuongminhanh',
-        'name': 'Tuong Minh Anh Ltd. Co, HCMC',
-        'url': 'http://tuongminhanh.com.vn/',
-        'url-status': 'active',
-        'time': 'Mar 2017 - Oct 2017',
-        'category': '201710',
-        'position': 'Deployer and Maintainer.'
-      },
-      'nckh2017': {
-        'key': 'nckh2017',
-        'name': 'Student Sciences Research 2017, Can Tho University',
-        'url': null,
-        'url-status': 'none',
-        'time': 'Jun 2017 - Dec 2017',
-        'category': '201712',
-        'position': 'Project Manager. Fullstack Developer.'
-      },
-      'vienquyhoach': {
-        'key': 'vienquyhoach',
-        'name': 'Can Tho Planning Institute, Can Tho City Construction Department',
-        'url': 'https://www.vienquyhoach.cantho.gov.vn/',
-        'url-status': 'active',
-        'time': 'Dec 2017 - Feb 2018',
-        'category': '201802',
-        'position': 'Project Manager. Deployer and Maintainer.'
-      },
-      'nckh2018_26': {
-        'key': 'nckh2018_26',
-        'name': 'Student Sciences Research 2018, Can Tho University',
-        'url': null,
-        'url-status': 'none',
-        'time': 'Jun 2018 - Nov 2018',
-        'category': '201811',
-        'position': 'Restful API Developer. Deployer and Maintainer.'
-      },
-      'myphuoc': {
-        'key': 'myphuoc',
-        'name': 'My Phuoc Species and Habitat Conservation Portal, Soc Trang',
-        'url': 'https://baotonmyphuoc.com',
-        'url-status': 'suspend',
-        'time': 'Aug 2018 - Nov 2018',
-        'category': '201811',
-        'position': 'Fullstack Developer.'
-      },
-      'nckh2018_38': {
-        'key': 'nckh2018_38',
-        'name': 'Student Sciences Research 2018, Can Tho University',
-        'url': null,
-        'url-status': 'none',
-        'time': 'Jun 2018 - Dec 2018',
-        'category': '201812',
-        'position': 'Document Writer.'
-      },
-      'luanvan2018': {
-        'key': 'luanvan2018',
-        'name': 'Graduation Thesis - Software Engineering, Can Tho University',
-        'url': null,
-        'url-status': 'none',
-        'time': 'Aug 2018 - Dec 2018',
-        'category': '201812',
-        'position': 'Fullstack Developer.'
-      },
-      'htsystem': {
-        'key': 'htsystem',
-        'name': 'Humidity and Temperature Monitoring System (TMA Solutions Ltd. Co), HCMC',
-        'url': null,
-        'url-status': 'none',
-        'time': 'Feb 2019 - May 2019',
-        'category': '201905',
-        'position': 'Web Development Team Leader. Java Spring Boot Developer.'
-      }
-    };
-  </script>
+  <script src="src/public/resources/js/last-work-info.min.js"></script>
 </head>
 
 <body>
@@ -556,149 +477,26 @@
   </footer>
 
   <!-- library-->
-  <script type="text/javascript" src="src/public/resources/js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="src/public/resources/vendor/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js"></script>
+  <script type="text/javascript" src="node_modules/wow.js/dist/wow.min.js"></script>
+
   <!-- custom -->
-  <script type="text/javascript" src="src/public/resources/js/canvas-header.js"></script>
-  <script type="text/javascript" src="src/public/resources/js/rAF.js"></script>
-  <script type="text/javascript" src="src/public/resources/vendor/wow/dist/wow.min.js"></script>
+  <script type="text/javascript" src="src/public/resources/js/canvas-header.min.js"></script>
+  <script type="text/javascript" src="src/public/resources/js/rAF.min.js"></script>
   <script type="text/javascript" src="src/public/resources/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
-  <script type="text/javascript" src="src/public/resources/vendor/jQuery-One-Page-Nav/jquery.nav.js"></script>
+
   <script type="text/javascript" src="src/public/resources/js/custom.min.js"></script>
+
+  <!-- Material UI settings -->
+  <script src="src/public/resources/js/mui-config.js"></script>
 
   <!-- muicss - muicss.com -->
   <script src="src/public/resources/js/mui-combined.min.js"></script>
 
-  <script type="text/javascript">
-    var template_small = "";
-    for (var k in lastwork) {
-      template_small += '<div class="col-md-3 col-sm-3 col-xs-6">' +
-        '<div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.6s">' +
-          '<div class="ImageWrapper" onclick="activateModal(' + "'" + lastwork[k]['key'] + "'" + ')">' +
-              '<img class="img-responsive" src="src/public/resources/images/lastwork/small/webp/' + lastwork[k]['key'] + '.webp"  alt="">' +
-              '<div class="PStyleHe"></div>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
-    }
-    console.log(template_small);
-    document.getElementById("lastwork").innerHTML = template_small;
-  </script>
-
   <!-- WOW.js Init -->
-  <script> new WOW().init(); </script>
-
-  <!-- Material UI settings -->
-  <script>
-    function activateModal(project) {
-      // initialize modal element
-      var modalEl = document.createElement('div');
-      modalEl.className = 'row modal-custom';
-      modalEl.id = 'lastwork-modal';
-
-      // add image
-      var div_img = document.createElement('div');
-      div_img.className = 'col-lg-12 col-md-12 col-sm-12 col-xs-12';
-      div_img.id = 'image';
-
-      var img = document.createElement('img');
-      img.src = 'src/public/resources/images/lastwork/big/' + project + '.png';
-
-      div_img.appendChild(img);
-
-      // add info
-      var div_info = document.createElement('div');
-      div_info.className = 'col-lg-12 col-md-12 col-sm-12 col-xs-12 row';
-      div_info.style.margin = '10px auto 10px auto';
-      div_img.id = 'info';
-
-      // name
-      var spanProjectName = document.createElement('div');
-      spanProjectName.className = 'project-name';
-
-      var strongProjectNameLabel = document.createElement('strong');
-      strongProjectNameLabel.id = 'project-name-label';
-
-      var projectNameLabel = document.createTextNode("Project: ");
-
-      strongProjectNameLabel.appendChild(projectNameLabel);
-
-      var projectNameText = document.createTextNode(lastwork[project]['name']);
-
-      spanProjectName.appendChild(strongProjectNameLabel);
-      spanProjectName.appendChild(projectNameText);
-
-      // url
-      var spanUrl = document.createElement('div');
-      spanUrl.className = 'url';
-
-      var strongUrlLabel = document.createElement('strong');
-      strongUrlLabel.id = 'url-label';
-
-      var urlLabel = document.createTextNode("URL: ");
-
-      strongUrlLabel.appendChild(urlLabel);
-
-      if (lastwork[project]['url'] != null) {
-        var a = document.createElement('a');
-        a.appendChild(document.createTextNode(lastwork[project]['url']));
-        a.setAttribute('href', lastwork[project]['url']);
-        a.setAttribute('target', '_blank');
-      } else a = document.createTextNode('');
-
-      if (lastwork[project]['url-status'] != 'active') {
-        var status = document.createTextNode(' (' + lastwork[project]['url-status'] + ')');
-      } else status = document.createTextNode('');
-
-      spanUrl.appendChild(strongUrlLabel);
-      spanUrl.appendChild(a);
-      spanUrl.appendChild(status);
-
-      // time
-      var spanTime = document.createElement('div');
-      spanTime.className = 'time';
-
-      var strongTimeLabel = document.createElement('strong');
-      strongTimeLabel.id = 'time-label';
-
-      var timeLabel = document.createTextNode("Time: ");
-
-      strongTimeLabel.appendChild(timeLabel);
-
-      var timeText = document.createTextNode(lastwork[project]['time']);
-
-      spanTime.appendChild(strongTimeLabel);
-      spanTime.appendChild(timeText);
-
-      // position
-      var spanPosition = document.createElement('div');
-      spanPosition.className = 'position';
-
-      var strongPositionLabel = document.createElement('strong');
-      strongPositionLabel.id = 'position-label';
-
-      var positionLabel = document.createTextNode("Position: ");
-
-      strongPositionLabel.appendChild(positionLabel);
-
-      var positionText = document.createTextNode(lastwork[project]['position']);
-
-      spanPosition.appendChild(strongPositionLabel);
-      spanPosition.appendChild(positionText);
-
-      div_info.appendChild(spanProjectName);
-      div_info.appendChild(spanUrl);
-      div_info.appendChild(spanTime);
-      div_info.appendChild(spanPosition);
-
-      // add image and info
-      modalEl.appendChild(div_img);
-      modalEl.appendChild(div_info);
-
-      // show modal
-      mui.overlay('on', modalEl);
-    }
-  </script>
+  <script> new WOW().init(); </script>  
 
 </body>
 
