@@ -21,7 +21,7 @@ var lastwork = {
       'key': 'nckh2017',
       'name': 'Student Sciences Research 2017, Can Tho University',
       'url': null,
-      'url-status': 'none',
+      'url-status': 'private',
       'time': 'Jun 2017 - Dec 2017',
       'category': '201712',
       'position': 'Project Manager. Fullstack Developer.'
@@ -39,7 +39,7 @@ var lastwork = {
       'key': 'nckh2018_26',
       'name': 'Student Sciences Research 2018, Can Tho University',
       'url': null,
-      'url-status': 'none',
+      'url-status': 'private',
       'time': 'Jun 2018 - Nov 2018',
       'category': '201811',
       'position': 'Restful API Developer. Deployer and Maintainer.'
@@ -57,7 +57,7 @@ var lastwork = {
       'key': 'nckh2018_38',
       'name': 'Student Sciences Research 2018, Can Tho University',
       'url': null,
-      'url-status': 'none',
+      'url-status': 'private',
       'time': 'Jun 2018 - Dec 2018',
       'category': '201812',
       'position': 'Document Writer.'
@@ -66,7 +66,7 @@ var lastwork = {
       'key': 'luanvan2018',
       'name': 'Graduation Thesis - Software Engineering, Can Tho University',
       'url': null,
-      'url-status': 'none',
+      'url-status': 'private',
       'time': 'Aug 2018 - Dec 2018',
       'category': '201812',
       'position': 'Fullstack Developer.'
@@ -75,7 +75,7 @@ var lastwork = {
       'key': 'htsystem',
       'name': 'Humidity and Temperature Monitoring System (TMA Solutions Ltd. Co), HCMC',
       'url': null,
-      'url-status': 'none',
+      'url-status': 'private',
       'time': 'Feb 2019 - May 2019',
       'category': '201905',
       'position': 'Web Development Team Leader. Java Spring Boot Developer.'
