@@ -6,7 +6,8 @@ var lastwork = {
       'url-status': 'suspend',
       'time': 'Aug 2016 - Sep 2016',
       'category': '201609',
-      'position': 'Project Manager. Fullstack Developer.'
+      'technical': 'Wordpress',
+      'position': 'Project Manager.'
     },
     'tuongminhanh': {
       'key': 'tuongminhanh',
@@ -15,7 +16,8 @@ var lastwork = {
       'url-status': 'active',
       'time': 'Mar 2017 - Oct 2017',
       'category': '201710',
-      'position': 'Deployer and Maintainer.'
+      'technical': 'Wordpress',
+      'position': 'SysAdmin.'
     },
     'nckh2017': {
       'key': 'nckh2017',
@@ -24,7 +26,8 @@ var lastwork = {
       'url-status': 'private',
       'time': 'Jun 2017 - Dec 2017',
       'category': '201712',
-      'position': 'Project Manager. Fullstack Developer.'
+      'technical': 'CodeIgniter - PHP - MySQL - RFID',
+      'position': 'Project Manager.'
     },
     'vienquyhoach': {
       'key': 'vienquyhoach',
@@ -33,7 +36,8 @@ var lastwork = {
       'url-status': 'active',
       'time': 'Dec 2017 - Feb 2018',
       'category': '201802',
-      'position': 'Project Manager. Deployer and Maintainer.'
+      'technical': 'Wordpress',
+      'position': 'Project Manager.'
     },
     'nckh2018_26': {
       'key': 'nckh2018_26',
@@ -42,7 +46,8 @@ var lastwork = {
       'url-status': 'private',
       'time': 'Jun 2018 - Nov 2018',
       'category': '201811',
-      'position': 'Restful API Developer. Deployer and Maintainer.'
+      'technical': 'Restful API - Node.js - MySQL',
+      'position': 'API Developer.'
     },
     'myphuoc': {
       'key': 'myphuoc',
@@ -51,6 +56,7 @@ var lastwork = {
       'url-status': 'suspend',
       'time': 'Aug 2018 - Nov 2018',
       'category': '201811',
+      'technical': 'CodeIgniter - PHP - MySQL',
       'position': 'Fullstack Developer.'
     },
     'nckh2018_38': {
@@ -60,7 +66,8 @@ var lastwork = {
       'url-status': 'private',
       'time': 'Jun 2018 - Dec 2018',
       'category': '201812',
-      'position': 'Document Writer.'
+      'technical': 'n/a',
+      'position': 'Financial & Legal Officer.'
     },
     'luanvan2018': {
       'key': 'luanvan2018',
@@ -69,6 +76,7 @@ var lastwork = {
       'url-status': 'private',
       'time': 'Aug 2018 - Dec 2018',
       'category': '201812',
+      'technical': 'CodeIgniter - PHP - MySQL',
       'position': 'Fullstack Developer.'
     },
     'htsystem': {
@@ -78,6 +86,7 @@ var lastwork = {
       'url-status': 'private',
       'time': 'Feb 2019 - May 2019',
       'category': '201905',
-      'position': 'Web Development Team Leader. Java Spring Boot Developer.'
+      'technical': 'Spring Boot - Java - MySQL',
+      'position': 'Web Development Team Leader.'
     }
   };

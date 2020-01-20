@@ -78,6 +78,22 @@ function activateModal(project) {
     spanTime.appendChild(strongTimeLabel);
     spanTime.appendChild(timeText);
 
+    // technical
+    var spanTechnical = document.createElement('div');
+    spanTechnical.className = 'technical';
+
+    var strongTechnicalLabel = document.createElement('strong');
+    strongTechnicalLabel.id = 'technical-label';
+
+    var technicalLabel = document.createTextNode("Technical: ");
+
+    strongTechnicalLabel.appendChild(technicalLabel);
+
+    var technicalText = document.createTextNode(lastwork[project]['technical']);
+
+    spanTechnical.appendChild(strongTechnicalLabel);
+    spanTechnical.appendChild(technicalText);
+
     // position
     var spanPosition = document.createElement('div');
     spanPosition.className = 'position';
@@ -97,6 +113,7 @@ function activateModal(project) {
     div_info.appendChild(spanProjectName);
     div_info.appendChild(spanUrl);
     div_info.appendChild(spanTime);
+    div_info.appendChild(spanTechnical);
     div_info.appendChild(spanPosition);
 
     // add image and info
