@@ -1,2 +1,5 @@
 # ngthuc.github.io
-My Git Site
+My Resume
+
+## Tools
+* [Minify](http://minifycode.com/)
