@@ -1,3 +1,10 @@
+$(document).click(function(e) {
+    if (!$(e.target).is('a')) {
+        $('.collapse').collapse('hide');
+      }
+    }
+);
+
 $(document).ready(function() {
     $("#menu").click(function() {
         $(".main-nav").sidebar({
