@@ -92,7 +92,7 @@ gulp.task('index', function(done) {
 
 gulp.task('clean', function(done) {
   // del.sync(['dist/**/*', '!dist/images', '!dist/images/**/*']);
-  del.sync(['images/**/*', 'fonts/**/*', 'css/**/*', 'js/**/*', 'index.html']);
+  del.sync(['images/**/*', 'fonts/**/*', 'css/**/*', 'js/**/*', 'index.html', '!images', '!images/**/*', '!fonts', '!fonts/**/*']);
   done();
 });
 
