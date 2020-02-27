@@ -18982,7 +18982,7 @@ for (var k in lastwork) {
           '</div>' +
         '</div>' +
       '</div>';
-}//src="assets/images/lastwork/' + lastwork[k]['key'] + '.min.webp"
+}//src="app/images/lastwork/' + lastwork[k]['key'] + '.min.webp"
 console.log(template_small);
 document.getElementById("lastwork").innerHTML = template_small;
 
@@ -18999,7 +18999,7 @@ function activateModal(project) {
     div_img.id = 'image';
 
     var img = document.createElement('img');
-    img.src = 'assets/images/lastwork/' + project + '.max.png';
+    img.src = 'app/images/lastwork/' + project + '.max.png';
 
     div_img.appendChild(img);
 
