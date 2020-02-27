@@ -8,11 +8,12 @@ var cssnano = require('gulp-cssnano');
 // var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
-var runSequence = require('run-sequence');
+var runSequence = require('gulp4-run-sequence');
 
 // Basic Gulp task syntax
-gulp.task('start', function() {
+gulp.task('start', function(done) {
   console.log('Starting pipeline!');
+  done();
 });
 
 // Development Tasks 
@@ -27,20 +28,22 @@ gulp.task('browserSync', function() {
   })
 });
 
-gulp.task('sass', function() {
+gulp.task('sass', function(done) {
 //   return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
 //     .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
 //     .pipe(gulp.dest('app/css')) // Outputs it in the css folder
 //     .pipe(browserSync.reload({ // Reloading with Browser Sync
 //       stream: true
 //     }));
+  return done();
 });
 
 // Watchers
-gulp.task('watch', function() {
-  gulp.watch('app/scss/**/*.scss', ['sass']);
-  gulp.watch('app/*.html', browserSync.reload);
-  gulp.watch('app/js/**/*.js', browserSync.reload);
+gulp.task('watch', function(done) {
+  // gulp.watch('app/scss/**/*.scss', ['sass']);
+  // gulp.watch('app/*.html', browserSync.reload);
+  // gulp.watch('app/js/**/*.js', browserSync.reload);
+  return done();
 });
 
 // Optimization Tasks 
@@ -48,12 +51,11 @@ gulp.task('watch', function() {
 
 // Optimizing CSS and JavaScript 
 gulp.task('useref', function() {
-
   return gulp.src('app/*.html')
     .pipe(useref())
-    .pipe(gulpIf('*.js', uglify()))
+    // .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('../ngthuc'));
 });
 
 // Optimizing Images 
@@ -64,12 +66,21 @@ gulp.task('images', function() {
 //       interlaced: true,
 //     })))
 //     .pipe(gulp.dest('dist/images'))
+  return gulp.src('app/images/**')
+  .pipe(gulp.dest('images'))
 });
 
 // Copying fonts 
 gulp.task('fonts', function() {
   return gulp.src('app/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'))
+    .pipe(gulp.dest('fonts'))
+});
+
+// Copying index.html to root dir 
+gulp.task('index', function(done) {
+  // return gulp.src('dist/index.html')
+  //   .pipe(gulp.dest('../ngthuc'))
+  return done();
 });
 
 // Cleaning 
@@ -80,7 +91,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('clean:dist', function() {
-  return del.sync(['dist/**/*', '!dist/images', '!dist/images/**/*']);
+  return del.sync(['dist/**/*', 'images/**/*', 'fonts/**/*', 'css/**/*', 'js/**/*', 'index.html', '!dist/images', '!dist/images/**/*']);
 });
 
 // Build Sequences
@@ -92,10 +103,10 @@ gulp.task('default', function(callback) {
   )
 });
 
-gulp.task('build-production', function(callback) {
+gulp.task('prod', function(callback) {
   runSequence(
-    'clean:dist',
-    ['sass', 'useref', 'images', 'fonts'],
+    ['sass', 'useref', 'images', 'fonts'], 
+    'index',
     callback
   )
 });

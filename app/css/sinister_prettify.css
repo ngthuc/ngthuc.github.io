@@ -2162,7 +2162,7 @@
     Plus Button Effects
     ============================================= */
     .ImageWrapper .PStyleH {
-        background: url(../assets/images/plus.png) no-repeat scroll center center / 60px 60px #222222;
+        background: url(../images/plus.png) no-repeat scroll center center / 60px 60px #222222;
         height: 100%;
         left: 0;
         opacity: 0;
@@ -2183,7 +2183,7 @@
     }
     .ImageWrapper .PStyleHe {
         position: absolute;
-        background: url(../assets/images/plus.png) no-repeat scroll center center / 100% 100% #222222;
+        background: url(../images/plus.png) no-repeat scroll center center / 100% 100% #222222;
         width: 100%;
         height: 100%;
         z-index: 199;
@@ -2222,7 +2222,7 @@
             -ms-transform: scale(0.5) rotateY(180deg);
              -o-transform: scale(0.5) rotateY(180deg);
                 transform: scale(0.5) rotateY(180deg);
-        background: url(../assets/images/plus.png) no-repeat scroll center center / 60px 60px #222222;
+        background: url(../images/plus.png) no-repeat scroll center center / 60px 60px #222222;
         height: 100%;
         left: 0;
         opacity: 0;
@@ -2252,7 +2252,7 @@
             -ms-transform: scale(0.5) rotateX(180deg);
              -o-transform: scale(0.5) rotateX(180deg);
                 transform: scale(0.5) rotateX(180deg);
-        background: url(../assets/images/plus.png) no-repeat scroll center center / 60px 60px #222222;
+        background: url(../images/plus.png) no-repeat scroll center center / 60px 60px #222222;
         height: 100%;
         left: 0;
         opacity: 0;
@@ -2278,7 +2278,7 @@
     }
     .ImageWrapper .PStyleB {
         position: absolute;
-        background: url(../assets/images/plus.png) no-repeat scroll top left / 100% 100% #222222;
+        background: url(../images/plus.png) no-repeat scroll top left / 100% 100% #222222;
         width: 100%;
         height: 100%;
         z-index: 199;
@@ -2314,7 +2314,7 @@
     }
     .ImageWrapper .PStyleC {
         position: absolute;
-        background: url(../assets/images/plus.png) no-repeat scroll top left / 100% 100% #222222;
+        background: url(../images/plus.png) no-repeat scroll top left / 100% 100% #222222;
         width: 100%;
         height: 100%;
         z-index: 199;
@@ -2350,7 +2350,7 @@
     }
     .ImageWrapper .PStyleN {
         position: absolute;
-        background: url(../assets/images/plus.png) no-repeat scroll top left / 100% 100% #222222;
+        background: url(../images/plus.png) no-repeat scroll top left / 100% 100% #222222;
         width: 100%;
         height: 100%;
         z-index: 199;
@@ -2386,7 +2386,7 @@
     }
     .ImageWrapper .PStyleO {
         position: absolute;
-        background: url(../assets/images/plus.png) no-repeat scroll top left / 100% 100% #222222;
+        background: url(../images/plus.png) no-repeat scroll top left / 100% 100% #222222;
         width: 100%;
         height: 100%;
         z-index: 199;
@@ -2422,7 +2422,7 @@
     }
     .ImageWrapper .PStyleF {
         position: absolute;
-        background: url(../assets/images/plus.png) no-repeat scroll top left / 100% 100% #222222;
+        background: url(../images/plus.png) no-repeat scroll top left / 100% 100% #222222;
         width: 100%;
         height: 100%;
         z-index: 199;
@@ -2458,7 +2458,7 @@
     }
     .ImageWrapper .PStyleNe {
         position: absolute;
-        background: url(../assets/images/plus.png) no-repeat scroll top left / 100% 100% #222222;
+        background: url(../images/plus.png) no-repeat scroll top left / 100% 100% #222222;
         width: 100%;
         height: 100%;
         z-index: 199;

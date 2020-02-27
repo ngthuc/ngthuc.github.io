@@ -34,11 +34,11 @@ for (var k in lastwork) {
     template_small += '<div class="col-md-3 col-sm-3 col-xs-6">' +
         '<div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.6s">' +
           '<div class="ImageWrapper" onclick="activateModal(' + "'" + lastwork[k]['key'] + "'" + ')">' +
-              '<img class="img-responsive" id="' + lastwork[k]['key'] + '" src="app/images/lastwork/' + lastwork[k]['key'] + '.min.webp" alt="">' +
+              '<img class="img-responsive" src="images/lastwork/' + lastwork[k]['key'] + '.min.webp" alt="">' +
               '<div class="PStyleHe"></div>' +
           '</div>' +
         '</div>' +
       '</div>';
-}//src="app/images/lastwork/' + lastwork[k]['key'] + '.min.webp"
+}//src="app/images/lastwork/' + lastwork[k]['key'] + '.min.webp"  id="' + lastwork[k]['key'] + '"
 console.log(template_small);
 document.getElementById("lastwork").innerHTML = template_small;

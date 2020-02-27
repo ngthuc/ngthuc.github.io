@@ -10,7 +10,7 @@ function activateModal(project) {
     div_img.id = 'image';
 
     var img = document.createElement('img');
-    img.src = 'assets/images/lastwork/' + project + '.max.png';
+    img.src = 'images/lastwork/' + project + '.max.png';
 
     div_img.appendChild(img);
 
