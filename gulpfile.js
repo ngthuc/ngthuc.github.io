@@ -90,8 +90,9 @@ gulp.task('clean', function() {
   });
 });
 
-gulp.task('clean:dist', function() {
-  return del.sync(['dist/**/*', 'images/**/*', 'fonts/**/*', 'css/**/*', 'js/**/*', 'index.html', '!dist/images', '!dist/images/**/*']);
+gulp.task('clean:dist', function(done) {
+  del.sync(['dist/**/*', 'images/**/*', 'fonts/**/*', 'css/**/*', 'js/**/*', 'index.html', '!dist/images', '!dist/images/**/*']);
+  done();
 });
 
 // Build Sequences
@@ -105,6 +106,7 @@ gulp.task('default', function(callback) {
 
 gulp.task('prod', function(callback) {
   runSequence(
+    'clean:dist',
     ['sass', 'useref', 'images', 'fonts'], 
     'index',
     callback
