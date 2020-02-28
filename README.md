@@ -37,6 +37,6 @@ cd ../../
 
 * Rebuild production
 ```shell
-gulp prod
+gulp build
 gulp
 ```

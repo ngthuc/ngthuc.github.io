@@ -9,6 +9,15 @@ var cssnano = require('gulp-cssnano');
 var cache = require('gulp-cache');
 var del = require('del');
 var runSequence = require('gulp4-run-sequence');
+// var gulpRename = require('gulp-rename');
+ 
+// renameIndex renames the index file and puts it
+// in the root directory
+// gulp.task('renameIndex', ['minIndex'], function () {
+//     return gulp.src('index/index.debug.html')
+//         .pipe(gulpRename('index/index.release.html'))
+//         .pipe(gulp.dest('.'));
+// });
 
 // Basic Gulp task syntax
 gulp.task('start', function(done) {
@@ -25,7 +34,22 @@ gulp.task('browserSync', function() {
     server: {
       baseDir: 'app'
     }
-  })
+  });
+
+  gulp.watch('app/scss/**/*.scss', ['sass']);
+  gulp.watch('app/*.html', reload);
+  gulp.watch('app/js/**/*.js', reload);
+});
+
+gulp.task('serve', function() {
+  browserSync({
+    server: {
+      baseDir: '.'
+    }
+  });
+
+  gulp.watch(['*.html'], reload);
+  gulp.watch(['js/*.js'], reload);
 });
 
 gulp.task('sass', function(done) {
@@ -39,12 +63,12 @@ gulp.task('sass', function(done) {
 });
 
 // Watchers
-gulp.task('watch', function(done) {
-  // gulp.watch('app/scss/**/*.scss', ['sass']);
-  // gulp.watch('app/*.html', browserSync.reload);
-  // gulp.watch('app/js/**/*.js', browserSync.reload);
-  return done();
-});
+// gulp.task('watch', function(done) {
+//   gulp.watch('app/scss/**/*.scss', ['sass']);
+//   gulp.watch('app/*.html', browserSync.reload);
+//   gulp.watch('app/js/**/*.js', browserSync.reload);
+//   done();
+// });
 
 // Optimization Tasks 
 // ------------------
@@ -55,7 +79,7 @@ gulp.task('useref', function() {
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify({ mangle: false })))
     .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('../ngthuc'));
+    .pipe(gulp.dest('.'));
 });
 
 // Optimizing Images 
@@ -89,16 +113,21 @@ gulp.task('clean', function(done) {
   done();
 });
 
+gulp.task('clean:image', function(done) {
+  del.sync('images/**/*');
+  done();
+});
+
 // Build Sequences
 // ---------------
 
 gulp.task('default', function(callback) {
-  runSequence(['sass', 'browserSync'], 'watch',
+  runSequence(['sass', 'browserSync'],
     callback
   )
 });
 
-gulp.task('prod', function(callback) {
+gulp.task('build', function(callback) {
   runSequence(
     'clean',
     ['sass', 'useref', 'images', 'fonts'], 
