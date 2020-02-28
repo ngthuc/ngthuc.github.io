@@ -76,13 +76,6 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('fonts'))
 });
 
-// Copying index.html to root dir 
-gulp.task('index', function(done) {
-  // return gulp.src('dist/index.html')
-  //   .pipe(gulp.dest('../ngthuc'))
-  return done();
-});
-
 // Cleaning 
 // gulp.task('clean', function() {
 //   return del.sync(['dist/**/*', 'images/**/*', 'fonts/**/*', 'css/**/*', 'js/**/*', 'index.html', '!dist/images', '!dist/images/**/*']).then(function(cb) {
@@ -109,7 +102,6 @@ gulp.task('prod', function(callback) {
   runSequence(
     'clean',
     ['sass', 'useref', 'images', 'fonts'], 
-    'index',
     callback
   )
 });
