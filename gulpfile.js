@@ -9,7 +9,7 @@ var cssnano = require('gulp-cssnano');
 var cache = require('gulp-cache');
 var del = require('del');
 var runSequence = require('gulp4-run-sequence');
-// var gulpRename = require('gulp-rename');
+var rename = require('gulp-rename');
  
 // renameIndex renames the index file and puts it
 // in the root directory
@@ -74,8 +74,17 @@ gulp.task('sass', function(done) {
 // ------------------
 
 // Optimizing CSS and JavaScript 
+// gulp.task('useref', function() {
+//   return gulp.src('app/*.html')
+//     .pipe(useref())
+//     .pipe(gulpIf('*.js', uglify({ mangle: false })))
+//     .pipe(gulpIf('*.css', cssnano()))
+//     .pipe(gulp.dest('.'));
+// });
+
 gulp.task('useref', function() {
-  return gulp.src('app/*.html')
+  return gulp.src('developer.html')
+    .pipe(rename('index.html'))
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify({ mangle: false })))
     .pipe(gulpIf('*.css', cssnano()))
