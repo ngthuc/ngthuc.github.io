@@ -29,17 +29,17 @@ gulp.task('start', function(done) {
 // -----------------
 
 // Start browserSync server
-gulp.task('browserSync', function() {
-  browserSync({
-    server: {
-      baseDir: 'app'
-    }
-  });
+// gulp.task('browserSync', function() {
+//   browserSync({
+//     server: {
+//       baseDir: 'app'
+//     }
+//   });
 
-  gulp.watch('app/scss/**/*.scss', ['sass']);
-  gulp.watch('app/*.html', browserSync.reload);
-  gulp.watch('app/js/**/*.js', browserSync.reload);
-});
+//   gulp.watch('app/scss/**/*.scss', ['sass']);
+//   gulp.watch('app/*.html', browserSync.reload);
+//   gulp.watch('app/js/**/*.js', browserSync.reload);
+// });
 
 gulp.task('serve', function() {
   browserSync({
@@ -131,7 +131,7 @@ gulp.task('clean:image', function(done) {
 // ---------------
 
 gulp.task('default', function(callback) {
-  runSequence(['sass', 'browserSync'],
+  runSequence(['sass', 'serve'],
     callback
   )
 });
