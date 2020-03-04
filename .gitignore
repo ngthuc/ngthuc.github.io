@@ -3,3 +3,5 @@ origin-src
 
 .nojekyll
 package-lock.json
+
+*.log
