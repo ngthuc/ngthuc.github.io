@@ -41,7 +41,7 @@ gulp.task('browserSync', function() {
   gulp.watch('app/js/**/*.js', browserSync.reload);
 });
 
-gulp.task('serve', function() {
+gulp.task('default', function() {
   browserSync({
     server: {
       baseDir: '.'
@@ -130,11 +130,11 @@ gulp.task('clean:image', function(done) {
 // Build Sequences
 // ---------------
 
-gulp.task('default', function(callback) {
-  runSequence(['sass', 'browserSync'],
-    callback
-  )
-});
+// gulp.task('default', function(callback) {
+//   runSequence(['sass', 'serve'],
+//     callback
+//   )
+// });
 
 gulp.task('build', function(callback) {
   runSequence(
