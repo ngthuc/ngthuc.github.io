@@ -29,17 +29,17 @@ gulp.task('start', function(done) {
 // -----------------
 
 // Start browserSync server
-gulp.task('browserSync', function() {
-  browserSync({
-    server: {
-      baseDir: 'app'
-    }
-  });
+// gulp.task('browserSync', function() {
+//   browserSync({
+//     server: {
+//       baseDir: 'app'
+//     }
+//   });
 
-  gulp.watch('app/scss/**/*.scss', ['sass']);
-  gulp.watch('app/*.html', browserSync.reload);
-  gulp.watch('app/js/**/*.js', browserSync.reload);
-});
+//   gulp.watch('app/scss/**/*.scss', ['sass']);
+//   gulp.watch('app/*.html', browserSync.reload);
+//   gulp.watch('app/js/**/*.js', browserSync.reload);
+// });
 
 gulp.task('default', function() {
   browserSync({
