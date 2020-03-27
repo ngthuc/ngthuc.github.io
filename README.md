@@ -30,7 +30,7 @@ npm install -g gulp-cli
 
 * Fix vulnerabilities (sometimes)
 ```shell
-cd .\node_modules\svgo\
+cd ./node_modules/svgo/
 npm install js-yaml@3.13.1
 cd ../../
 ```
