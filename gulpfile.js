@@ -29,45 +29,32 @@ gulp.task('start', function(done) {
 // -----------------
 
 // Start browserSync server
-// gulp.task('browserSync', function() {
+// gulp.task('browser-sync', function() {
 //   browserSync({
 //     server: {
-//       baseDir: 'app'
+//       baseDir: './'
 //     }
 //   });
 
-//   gulp.watch('app/scss/**/*.scss', ['sass']);
-//   gulp.watch('app/*.html', browserSync.reload);
-//   gulp.watch('app/js/**/*.js', browserSync.reload);
+//   gulp.watch("app/*.html").on('change', browserSync.reload);
+//   gulp.watch("app/js/**/*js").on('change', browserSync.reload);
 // });
 
-gulp.task('default', function() {
-  browserSync({
-    server: {
-      baseDir: '.'
-    }
-  });
+// Compile sass into CSS & auto-inject into browsers
+// gulp.task('sass', function(done) {
+//   // return gulp.src("app/scss/*.scss") // Gets all files ending with .scss in app/scss and children dirs
+//   //     .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
+//   //     .pipe(gulp.dest("app/css")) // Outputs it in the css folder
+//   //     .pipe(browserSync.stream()); // Stream to Browser Sync
+//       return done();
+// });
 
-  gulp.watch(['*.html'], browserSync.reload);
-  gulp.watch(['js/*.js'], browserSync.reload);
-});
-
-gulp.task('sass', function(done) {
-//   return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
-//     .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
-//     .pipe(gulp.dest('app/css')) // Outputs it in the css folder
-//     .pipe(browserSync.reload({ // Reloading with Browser Sync
-//       stream: true
-//     }));
-  return done();
-});
-
-// Watchers
-// gulp.task('watch', function(done) {
-//   gulp.watch('app/scss/**/*.scss', ['sass']);
-//   gulp.watch('app/*.html', browserSync.reload);
-//   gulp.watch('app/js/**/*.js', browserSync.reload);
-//   done();
+// Static Server + watching scss/html files
+// gulp.task('serve', function(callback) {
+//   runSequence(['sass','browser-sync'], callback);
+//   // gulp.watch("app/scss/**/*.scss", ['sass']);
+//   gulp.watch("app/*.html").on('change', browserSync.reload);
+//   gulp.watch("app/js/**/*js").on('change', browserSync.reload);
 // });
 
 // Optimization Tasks 
@@ -127,19 +114,26 @@ gulp.task('clean:image', function(done) {
   done();
 });
 
+// gulp.task('default', function(callback) {
+//   runSequence(['serve'], callback)
+// });
+
+// Start browserSync server
+gulp.task('default', function() {
+  browserSync({
+    server: {
+      baseDir: './'
+    }
+  });
+});
+
 // Build Sequences
 // ---------------
-
-// gulp.task('default', function(callback) {
-//   runSequence(['sass', 'serve'],
-//     callback
-//   )
-// });
 
 gulp.task('build', function(callback) {
   runSequence(
     'clean',
-    ['sass', 'useref', 'images', 'fonts'], 
+    ['useref', 'images', 'fonts'], 
     callback
   )
 });
