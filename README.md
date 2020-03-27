@@ -23,6 +23,11 @@ npm update
 npm install
 ```
 
+* Install gulp
+```shell
+npm install -g gulp
+```
+
 * Install gulp-cli
 ```shell
 npm install -g gulp-cli
