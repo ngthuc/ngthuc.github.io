@@ -88,5 +88,15 @@ var lastwork = {
       'category': '201905',
       'technical': 'Spring Boot - Java - MySQL',
       'position': 'Web Development Team Leader.'
+    },
+    'unipass': {
+      'key': 'unipass',
+      'name': 'UniPass Smart Ticket (ZaloPay by VNG Corp), HCMC',
+      'url': 'https://unipass.vn/',
+      'url-status': 'active',
+      'time': 'Mar 2020 - present',
+      'category': '202003',
+      'technical': 'ReactJS - Redux - Node.js',
+      'position': 'Web Frontend Developer.'
     }
   };
