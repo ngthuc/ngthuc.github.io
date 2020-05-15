@@ -98,5 +98,15 @@ var lastwork = {
       'category': '202003',
       'technical': 'ReactJS - Redux - Node.js',
       'position': 'Web Frontend Developer.'
+    },
+    'alphacloud': {
+      'key': 'alphacloud',
+      'name': 'AlphaCloud Bussiness Solutions for Merchant (ZaloPay by VNG Corp), HCMC',
+      'url': null,
+      'url-status': 'private',
+      'time': 'Apr 2020 - present',
+      'category': '202004',
+      'technical': 'Angular 9',
+      'position': 'Web Frontend Developer.'
     }
   };

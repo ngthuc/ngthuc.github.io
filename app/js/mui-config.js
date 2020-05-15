@@ -7,6 +7,7 @@ function activateModal(project) {
     // add image
     var div_img = document.createElement('div');
     div_img.className = 'col-lg-12 col-md-12 col-sm-12 col-xs-12';
+    div_img.style = 'display: flex;justify-content: center;';
     div_img.id = 'image';
 
     var img = document.createElement('img');
