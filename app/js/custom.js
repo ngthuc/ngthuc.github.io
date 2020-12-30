@@ -40,7 +40,7 @@ for (var k in lastwork) {
         '</div>' +
       '</div>';
 }//src="app/images/lastwork/' + lastwork[k]['key'] + '.min.webp"  id="' + lastwork[k]['key'] + '"
-console.log(template_small);
+// console.log(template_small);
 document.getElementById("lastwork").innerHTML = template_small;
 
 $("img.lazy").lazyload();

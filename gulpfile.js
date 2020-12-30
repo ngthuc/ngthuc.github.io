@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 // var sass = require('gulp-sass');
+var less = require('gulp-less')
 var browserSync = require('browser-sync');
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
@@ -35,10 +36,23 @@ gulp.task('start', function(done) {
 //       baseDir: './'
 //     }
 //   });
-
+//
 //   gulp.watch("app/*.html").on('change', browserSync.reload);
-//   gulp.watch("app/js/**/*js").on('change', browserSync.reload);
+//   gulp.watch('app/css/*.less', ['less']).on('change', browserSync.reload);
+//   gulp.watch("app/js/*.js").on('change', browserSync.reload);
 // });
+
+gulp.task('watch', function() {
+  browserSync({
+    server: {
+      baseDir: './'
+    }
+  });
+
+  gulp.watch('app/*.html').on('change', browserSync.reload);
+  gulp.watch('app/css/*.less', gulp.series('less')).on('change', browserSync.reload);
+  gulp.watch('app/js/*.js').on('change', browserSync.reload);
+});
 
 // Compile sass into CSS & auto-inject into browsers
 // gulp.task('sass', function(done) {
@@ -48,6 +62,14 @@ gulp.task('start', function(done) {
 //   //     .pipe(browserSync.stream()); // Stream to Browser Sync
 //       return done();
 // });
+
+gulp.task('less', function () {
+  return gulp.src('.app/css/*.less')
+      .pipe(less().on('error', function (err) {
+        console.log(err);
+      }))
+      .pipe(gulp.dest('.app/css'));
+});
 
 // Static Server + watching scss/html files
 // gulp.task('serve', function(callback) {
@@ -70,7 +92,7 @@ gulp.task('start', function(done) {
 // });
 
 gulp.task('useref', function() {
-  return gulp.src('developer.html')
+  return gulp.src('app/index.html')
     .pipe(rename('index.html'))
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify({ mangle: false })))
@@ -133,6 +155,7 @@ gulp.task('default', function() {
 gulp.task('build', function(callback) {
   runSequence(
     'clean',
+    'less',
     ['useref', 'images', 'fonts'], 
     callback
   )
