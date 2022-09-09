@@ -141,7 +141,7 @@ gulp.task('clean:image', function(done) {
 // });
 
 // Start browserSync server
-gulp.task('default', function() {
+gulp.task('serve', function() {
   browserSync({
     server: {
       baseDir: './'
@@ -159,4 +159,9 @@ gulp.task('build', function(callback) {
     ['useref', 'images', 'fonts'], 
     callback
   )
+});
+
+// Default choices
+gulp.task('default', function(callback) {
+  runSequence(['build'], callback)
 });
