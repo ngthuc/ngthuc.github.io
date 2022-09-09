@@ -1,0 +1,25 @@
+name: Build and deploy homepage
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  gulp-build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 18
+
+    - name: Compile with Gulp
+      uses: elstudio/actions-js-build/build@v4
+
+    - name: Commit changes
+      uses: elstudio/actions-js-build/commit@v4
+      with:
+        commitMessage: Regenerate css 
