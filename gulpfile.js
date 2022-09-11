@@ -97,7 +97,7 @@ gulp.task('useref', function() {
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify({ mangle: false })))
     .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('.'));
+    .pipe(gulp.dest('./build'));
 });
 
 // Optimizing Images 
@@ -109,13 +109,19 @@ gulp.task('images', function() {
 //     })))
 //     .pipe(gulp.dest('dist/images'))
   return gulp.src('app/images/**')
-  .pipe(gulp.dest('images'))
+  .pipe(gulp.dest('build/images'))
 });
 
 // Copying fonts 
 gulp.task('fonts', function() {
   return gulp.src('app/fonts/**/*')
-    .pipe(gulp.dest('fonts'))
+    .pipe(gulp.dest('build/fonts'))
+});
+
+// Copying CNAME config file 
+gulp.task('cname', function() {
+  return gulp.src('CNAME')
+    .pipe(gulp.dest('build/'))
 });
 
 // Cleaning 
@@ -144,7 +150,7 @@ gulp.task('clean:image', function(done) {
 gulp.task('serve', function() {
   browserSync({
     server: {
-      baseDir: './'
+      baseDir: './build'
     }
   });
 });
@@ -156,7 +162,7 @@ gulp.task('build', function(callback) {
   runSequence(
     'clean',
     'less',
-    ['useref', 'images', 'fonts'], 
+    ['useref', 'images', 'fonts', 'cname'], 
     callback
   )
 });
