@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 // var sass = require('gulp-sass');
-var less = require('gulp-less')
+var less = require('gulp-less');
 var browserSync = require('browser-sync');
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
@@ -11,7 +11,7 @@ var cache = require('gulp-cache');
 var del = require('del');
 var runSequence = require('gulp4-run-sequence');
 var rename = require('gulp-rename');
- 
+
 // renameIndex renames the index file and puts it
 // in the root directory
 // gulp.task('renameIndex', ['minIndex'], function () {
@@ -21,9 +21,9 @@ var rename = require('gulp-rename');
 // });
 
 // Basic Gulp task syntax
-gulp.task('start', function(done) {
-  console.log('Starting pipeline!');
-  done();
+gulp.task('start', function (done) {
+	console.log('Starting pipeline!');
+	done();
 });
 
 // Development Tasks 
@@ -42,16 +42,16 @@ gulp.task('start', function(done) {
 //   gulp.watch("app/js/*.js").on('change', browserSync.reload);
 // });
 
-gulp.task('watch', function() {
-  browserSync({
-    server: {
-      baseDir: './'
-    }
-  });
+gulp.task('watch', function () {
+	browserSync({
+		server: {
+			baseDir: './app'
+		}
+	});
 
-  gulp.watch('app/*.html').on('change', browserSync.reload);
-  gulp.watch('app/css/*.less', gulp.series('less')).on('change', browserSync.reload);
-  gulp.watch('app/js/*.js').on('change', browserSync.reload);
+	gulp.watch('./app/*.html').on('change', browserSync.reload);
+	gulp.watch('./app/css/*.less', gulp.series('less')).on('change', browserSync.reload);
+	gulp.watch('./app/js/*.js').on('change', browserSync.reload);
 });
 
 // Compile sass into CSS & auto-inject into browsers
@@ -64,11 +64,11 @@ gulp.task('watch', function() {
 // });
 
 gulp.task('less', function () {
-  return gulp.src('.app/css/*.less')
-      .pipe(less().on('error', function (err) {
-        console.log(err);
-      }))
-      .pipe(gulp.dest('.app/css'));
+	return gulp.src('./app/css/*.less')
+		.pipe(less().on('error', function (err) {
+			console.log(err);
+		}))
+		.pipe(gulp.dest('./public/css'));
 });
 
 // Static Server + watching scss/html files
@@ -91,55 +91,82 @@ gulp.task('less', function () {
 //     .pipe(gulp.dest('.'));
 // });
 
-gulp.task('useref', function() {
-  return gulp.src('app/index.html')
-    .pipe(rename('index.html'))
-    .pipe(useref())
-    .pipe(gulpIf('*.js', uglify({ mangle: false })))
-    .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('./build'));
+gulp.task('useref', function () {
+	return gulp.src('./app/production.html')
+		.pipe(rename('index.html'))
+		.pipe(useref())
+		.pipe(gulpIf('./app/*.js', uglify({mangle: false})))
+		.pipe(gulpIf('./app/*.css', cssnano()))
+		.pipe(gulp.dest('./public'));
 });
 
 // Optimizing Images 
-gulp.task('images', function() {
-//   return gulp.src('app/images/**/*.+(png|jpg|jpeg|gif|svg)')
+gulp.task('images', function () {
+//   return gulp.src('images/**/*.+(png|jpg|jpeg|gif|svg)')
 //     // Caching images that ran through imagemin
 //     .pipe(cache(imagemin({
 //       interlaced: true,
 //     })))
 //     .pipe(gulp.dest('dist/images'))
-  return gulp.src('app/images/**')
-  .pipe(gulp.dest('build/images'))
+	return gulp.src('./app/images/**')
+		.pipe(gulp.dest('public/images'));
 });
 
 // Copying fonts 
-gulp.task('fonts', function() {
-  return gulp.src('app/fonts/**/*')
-    .pipe(gulp.dest('build/fonts'))
+gulp.task('fonts', function () {
+	return gulp.src('./app/fonts/**/*')
+		.pipe(gulp.dest('public/fonts'));
 });
 
-// Copying CNAME config file 
-gulp.task('cname', function() {
-  return gulp.src('CNAME')
-    .pipe(gulp.dest('build/'))
+// Copying CNAME config file
+gulp.task('cname', function () {
+	return gulp.src('CNAME')
+		.pipe(gulp.dest('public/'));
+});
+
+// Copying React files
+gulp.task('logo192', function () {
+	return gulp.src('./app/logo192.png')
+		.pipe(gulp.dest('public/'));
+});
+gulp.task('logo512', function () {
+	return gulp.src('./app/logo512.png')
+		.pipe(gulp.dest('public/'));
+});
+gulp.task('manifest', function () {
+	return gulp.src('./app/manifest.json')
+		.pipe(gulp.dest('public/'));
+});
+gulp.task('robots', function () {
+	return gulp.src('./app/robots.txt')
+		.pipe(gulp.dest('public/'));
+});
+gulp.task('favicon', function () {
+	return gulp.src('./app/favicon.ico')
+		.pipe(gulp.dest('public/'));
+});
+
+gulp.task('react-files', function (callback) {
+	runSequence(['logo192', 'logo512', 'manifest', 'robots', 'favicon'], callback);
 });
 
 // Cleaning 
 // gulp.task('clean', function() {
-//   return del.sync(['dist/**/*', 'images/**/*', 'fonts/**/*', 'css/**/*', 'js/**/*', 'index.html', '!dist/images', '!dist/images/**/*']).then(function(cb) {
+//   return del.sync(['dist/**/*', 'images/**/*', 'fonts/**/*', 'css/**/*', 'js/**/*', 'production.html', '!dist/images', '!dist/images/**/*']).then(function(cb) {
 //     return cache.clearAll(cb);
 //   });
 // });
 
-gulp.task('clean', function(done) {
-  // del.sync(['dist/**/*', '!dist/images', '!dist/images/**/*']);
-  del.sync(['images/**/*', 'fonts/**/*', 'css/**/*', 'js/**/*', 'index.html', '!images', '!images/**/*', '!fonts', '!fonts/**/*']);
-  done();
+gulp.task('clean', function (done) {
+	// del.sync(['dist/**/*', '!dist/images', '!dist/images/**/*']);
+	// del.sync(['images/**/*', 'fonts/**/*', 'css/**/*', 'js/**/*', 'production.html', '!images', '!images/**/*', '!fonts', '!fonts/**/*']);
+	del.sync('public/**/*');
+	done();
 });
 
-gulp.task('clean:image', function(done) {
-  del.sync('images/**/*');
-  done();
+gulp.task('clean:image', function (done) {
+	del.sync('images/**/*');
+	done();
 });
 
 // gulp.task('default', function(callback) {
@@ -147,27 +174,28 @@ gulp.task('clean:image', function(done) {
 // });
 
 // Start browserSync server
-gulp.task('serve', function() {
-  browserSync({
-    server: {
-      baseDir: './build'
-    }
-  });
+gulp.task('serve', function () {
+	browserSync({
+		server: {
+			baseDir: './app'
+		}
+	});
 });
 
 // Build Sequences
 // ---------------
 
-gulp.task('build', function(callback) {
-  runSequence(
-    'clean',
-    'less',
-    ['useref', 'images', 'fonts', 'cname'], 
-    callback
-  )
+gulp.task('build', function (callback) {
+	runSequence(
+		'clean',
+		'less',
+		'useref',
+		['images', 'fonts', 'react-files', 'cname'],
+		callback
+	);
 });
 
 // Default choices
-gulp.task('default', function(callback) {
-  runSequence(['build'], callback)
+gulp.task('default', function (callback) {
+	runSequence(['build'], callback);
 });

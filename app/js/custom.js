@@ -10,13 +10,13 @@ $(document).ready(function() {
         $(".main-nav").sidebar({
             dimPage: !1,
             transition: "push"
-        }).sidebar("toggle")
+        }).sidebar("toggle");
     }), $("#intro").waypoint(function(direction) {
-        $("nav").toggleClass("fix-navigation")
-    }), (new WOW).init()
+        $("nav").toggleClass("fix-navigation");
+    }), (new WOW).init();
 });
 
-window.onscroll = function() {myFunction()};
+window.onscroll = function() {myFunction();};
 
 var header = document.getElementById("home-menu");
 var sticky = header.offsetTop;
