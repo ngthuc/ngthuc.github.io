@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  gulp-build:
+  react-deploy-gh-pages:
 
     runs-on: ubuntu-latest
 
