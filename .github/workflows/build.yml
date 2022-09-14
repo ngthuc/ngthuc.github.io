@@ -16,10 +16,4 @@ jobs:
       with:
         node-version: 18
 
-    - name: Compile with Gulp
-      uses: elstudio/actions-js-build/build@v4
-
-    - name: Commit changes
-      uses: elstudio/actions-js-build/commit@v4
-      with:
-        commitMessage: Regenerate css 
+    - run: npm install --legacy-peer-deps && npm run deploy
