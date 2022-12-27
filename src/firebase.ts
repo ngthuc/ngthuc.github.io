@@ -11,7 +11,10 @@ const firebaseConfig = {
     apiKey: "AIzaSyAXCOg5n1ajvPeTssQQ-FHBtV3EEsFLUUk",
     authDomain: "mylife-c4638.firebaseapp.com",
     projectId: "mylife-c4638",
+    storageBucket: "mylife-c4638.appspot.com",
+    messagingSenderId: "324497415765",
     appId: "1:324497415765:web:b224276d45ecd4d3e87edc",
+    measurementId: "G-YDVMBZKB5E"
 };
 
 // Initialize Firebase
