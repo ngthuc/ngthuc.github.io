@@ -15223,7 +15223,8 @@ img {
   z-index: 99;
   background: #282d39;
   width: 100%;
-  border: none
+  border: none;
+  transition: width 2s, height 2s, transform 2s;
 }
 
 #homepage .homapage-content nav.navbar .navbar-brand {
