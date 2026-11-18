@@ -11,6 +11,7 @@ var cache = require('gulp-cache');
 var del = require('del');
 var runSequence = require('gulp4-run-sequence');
 var rename = require('gulp-rename');
+var fileInclude = require('gulp-file-include');
 
 // renameIndex renames the index file and puts it
 // in the root directory
@@ -42,17 +43,29 @@ gulp.task('start', function (done) {
 //   gulp.watch("app/js/*.js").on('change', browserSync.reload);
 // });
 
-gulp.task('watch', function () {
+// Expands app/production.html's @@include() partials into app/index.html
+// so browser-sync has a plain HTML file to serve during development.
+// app/index.html is generated — don't hand-edit it, edit production.html
+// and the files under app/partials/ instead.
+gulp.task('html:dev', function () {
+	return gulp.src('./app/production.html')
+		.pipe(fileInclude({prefix: '@@', basepath: '@file'}))
+		.pipe(rename('index.html'))
+		.pipe(gulp.dest('./app'));
+});
+
+gulp.task('watch', gulp.series('html:dev', function (done) {
 	browserSync({
 		server: {
 			baseDir: './app'
 		}
 	});
 
-	gulp.watch('./app/*.html').on('change', browserSync.reload);
+	gulp.watch(['./app/production.html', './app/partials/**/*.html'], gulp.series('html:dev')).on('change', browserSync.reload);
 	gulp.watch('./app/css/*.less', gulp.series('less')).on('change', browserSync.reload);
 	gulp.watch('./app/js/*.js').on('change', browserSync.reload);
-});
+	done();
+}));
 
 // Compile sass into CSS & auto-inject into browsers
 // gulp.task('sass', function(done) {
@@ -93,6 +106,7 @@ gulp.task('less', function () {
 
 gulp.task('useref', function () {
 	return gulp.src('./app/production.html')
+		.pipe(fileInclude({prefix: '@@', basepath: '@file'}))
 		.pipe(rename('index.html'))
 		.pipe(useref())
 		.pipe(gulpIf('./app/*.js', uglify({mangle: false})))

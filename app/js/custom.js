@@ -14,6 +14,11 @@ $(document).ready(function() {
     }), $("#intro").waypoint(function(direction) {
         $("nav").toggleClass("fix-navigation");
     }), (new WOW).init();
+
+    // the "Last Work" grid is now rendered at build time by gulp-file-include
+    // (see app/partials/last-work.html + lastwork-item.html), so it only
+    // needs lazyload wired up here, not built from the `lastwork` object.
+    $("img.lazy").lazyload();
 });
 
 window.onscroll = function() {myFunction();};
@@ -28,19 +33,3 @@ function myFunction() {
         header.classList.remove("fixed-bar");
     }
 }
-
-var template_small = "";
-for (var k in lastwork) {
-    template_small += '<div class="col-md-3 col-sm-3 col-xs-6">' +
-        '<div class="lw-item wow flipInX" data-wow-duration="2s" data-wow-delay="0.6s">' +
-          '<div class="ImageWrapper" onclick="activateModal(' + "'" + lastwork[k]['key'] + "'" + ')">' +
-              '<img class="lazy img-responsive" data-original="images/lastwork/' + lastwork[k]['key'] + '.min.webp" alt="">' +
-              '<div class="PStyleHe"></div>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
-}//src="app/images/lastwork/' + lastwork[k]['key'] + '.min.webp"  id="' + lastwork[k]['key'] + '"
-// console.log(template_small);
-document.getElementById("lastwork").innerHTML = template_small;
-
-$("img.lazy").lazyload();
