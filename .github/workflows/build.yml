@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  react-deploy-gh-pages:
+  deploy-gh-pages:
 
     runs-on: ubuntu-latest
 
@@ -16,4 +16,6 @@ jobs:
       with:
         node-version: 18
 
-    - run: npm install --legacy-peer-deps && npm run deploy
+    - run: npm install --legacy-peer-deps
+    - run: npm --prefix app install --legacy-peer-deps
+    - run: npm run deploy

@@ -138,7 +138,7 @@ gulp.task('cname', function () {
 		.pipe(gulp.dest('public/'));
 });
 
-// Copying React files
+// Copying static site files (icons, manifest, robots.txt)
 gulp.task('logo192', function () {
 	return gulp.src('./app/logo192.png')
 		.pipe(gulp.dest('public/'));
@@ -160,7 +160,7 @@ gulp.task('favicon', function () {
 		.pipe(gulp.dest('public/'));
 });
 
-gulp.task('react-files', function (callback) {
+gulp.task('static-files', function (callback) {
 	runSequence(['logo192', 'logo512', 'manifest', 'robots', 'favicon'], callback);
 });
 
@@ -204,7 +204,7 @@ gulp.task('build', function (callback) {
 		'clean',
 		'less',
 		'useref',
-		['images', 'fonts', 'react-files', 'cname'],
+		['images', 'fonts', 'static-files', 'cname'],
 		callback
 	);
 });
