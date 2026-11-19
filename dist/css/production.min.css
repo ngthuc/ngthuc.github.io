@@ -15588,9 +15588,16 @@ footer p {
 }
 
 .modal-custom {
-    margin: 60px auto;
+    /* #mui-overlay (mui-combined.js) is position:fixed covering the full
+       viewport, so centering against it this way keeps the modal in the
+       middle regardless of its own height (margin: auto only centers
+       horizontally, which is why it sat pinned near the top before) */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
     background-color: #fff;
-    position: relative;
     max-width: 95vw;
     max-height: 85vh;
     overflow-y: auto;
