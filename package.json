@@ -35,7 +35,7 @@
     "watch": "gulp watch",
     "serve": "gulp serve",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
