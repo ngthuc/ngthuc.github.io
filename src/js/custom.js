@@ -19,13 +19,15 @@ $(document).ready(function() {
     $("img.lazy").lazyload();
 
     // Single source of truth for the navbar's transparent<->solid state:
-    // a plain scroll-position check (not a one-shot waypoint at #intro),
-    // so scrolling back up reverts it right near the top instead of
-    // leaving the nav non-fixed (and invisible) for the whole hero height.
+    // stay transparent for the whole hero background, switch to solid
+    // only once it's been scrolled past (i.e. the next section is what's
+    // behind the fixed nav), symmetric in both scroll directions.
     var $nav = $("nav.navbar");
+    var $hero = $("#homepage");
     function toggleFixNav() {
-        $nav.toggleClass("fix-navigation", window.scrollY > 50);
+        $nav.toggleClass("fix-navigation", window.scrollY > $hero.outerHeight());
     }
     $(window).on("scroll", toggleFixNav);
+    $(window).on("resize", toggleFixNav);
     toggleFixNav();
 });
