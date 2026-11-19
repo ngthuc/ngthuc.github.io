@@ -4,13 +4,35 @@ function activateModal(project) {
     modalEl.className = 'row modal-custom';
     modalEl.id = 'lastwork-modal';
 
-    // add image
+    // close button (click-outside / Escape already close it via mui's
+    // overlay, but neither is obvious without an explicit control)
+    var closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'modal-close-btn';
+    closeBtn.setAttribute('aria-label', 'Close');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.onclick = function () {
+        mui.overlay('off');
+    };
+    modalEl.appendChild(closeBtn);
+
+    // add image, with a spinner shown until it finishes loading so the
+    // modal doesn't sit on a blank area / jump in size once it pops in
     var div_img = document.createElement('div');
-    div_img.className = 'col-lg-12 col-md-12 col-sm-12 col-xs-12';
-    div_img.style = 'display: flex;justify-content: center;';
+    div_img.className = 'col-lg-12 col-md-12 col-sm-12 col-xs-12 modal-image-wrap';
     div_img.id = 'image';
 
+    var spinner = document.createElement('div');
+    spinner.className = 'modal-spinner';
+    div_img.appendChild(spinner);
+
     var img = document.createElement('img');
+    img.alt = lastwork[project]['name'];
+    img.style.visibility = 'hidden';
+    img.onload = function () {
+        img.style.visibility = 'visible';
+        spinner.parentNode && spinner.parentNode.removeChild(spinner);
+    };
     img.src = 'images/lastwork/' + project + '.max.png';
 
     div_img.appendChild(img);
