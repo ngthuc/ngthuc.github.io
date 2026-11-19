@@ -1,0 +1,48 @@
+{
+  "work": [
+    {
+      "heading": "MoMo",
+      "start": "2022-08",
+      "end": null,
+      "desc": "Senior Software Engineer - React.js - Java - Auth &amp; Gateway"
+    },
+    {
+      "heading": "VNG Corp",
+      "start": "2020-03",
+      "end": "2022-07",
+      "desc": "Associate Software Engineer - Frontend Developer with React.js at ZaloPay"
+    },
+    {
+      "heading": "TMA Solutions",
+      "start": "2019-01",
+      "end": "2020-03",
+      "desc": "Software Engineer - Backend Web Development with Java Spring MVC"
+    },
+    {
+      "heading": "Can Tho University Student Sciences Research",
+      "start": "2017-06",
+      "end": "2017-12",
+      "desc": "Project Manager - Fullstack Developer with RFID, CodeIgniter, RestAPI."
+    }
+  ],
+  "education": [
+    {
+      "heading": "Can Tho University",
+      "start": "2014-09",
+      "end": "2018-12",
+      "desc": "Software Engineering"
+    },
+    {
+      "heading": "Cantho University Software Center",
+      "start": "2017-12",
+      "end": "2018-03",
+      "desc": "Learn Advanced Web Development (Laravel &amp; AngularJS module)"
+    },
+    {
+      "heading": "Self learning",
+      "start": "2015-08",
+      "end": null,
+      "desc": "Learn web"
+    }
+  ]
+}

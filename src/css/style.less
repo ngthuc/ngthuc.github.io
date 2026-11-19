@@ -146,9 +146,15 @@ img {
       }
     }
     nav.navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      width: 100%;
       background: 0 0;
       border: none;
       padding: 10px 0;
+      transition: background-color .35s ease, box-shadow .35s ease;
       .navbar-brand {
         font-weight: 700;
         text-transform: uppercase;
@@ -190,13 +196,8 @@ img {
       }
     }
     nav.navbar.fix-navigation {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 99;
       background: #282d39;
-      width: 100%;
-      border: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
     }
   }
   .home-overlay {

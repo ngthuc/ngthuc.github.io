@@ -5,15 +5,70 @@
 }
 
 .modal-custom {
-    margin: 100px auto;
+    /* #mui-overlay (mui-combined.js) is position:fixed covering the full
+       viewport, so centering against it this way keeps the modal in the
+       middle regardless of its own height (margin: auto only centers
+       horizontally, which is why it sat pinned near the top before) */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
     background-color: #fff;
+    max-width: 95vw;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
-.fixed-bar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #282D39;
+.modal-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .55);
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color .2s ease;
+}
+
+.modal-close-btn:hover {
+    background: rgba(0, 0, 0, .8);
+}
+
+.modal-image-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 160px;
+    position: relative;
+}
+
+.modal-image-wrap img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.modal-spinner {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    margin: auto;
+    border: 3px solid #e0e0e0;
+    border-top-color: #1ba39c;
+    border-radius: 50%;
+    animation: modal-spin .8s linear infinite;
+}
+
+@keyframes modal-spin {
+    to { transform: rotate(360deg); }
 }
 
 /* .sticky + .content {
@@ -23,28 +78,24 @@
 @media only screen and (min-width: 320px) {
   .modal-custom {
       width: 320px;
-      height: 320px;
   }
 }
 
 @media only screen and (min-width: 600px) {
   .modal-custom {
     width: 500px;
-    height: 380px;
   }
 }
 
 @media only screen and (min-width: 990px) {
   .modal-custom {
       width: 600px;
-      height: 420px;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .modal-custom {
       width: 800px;
-      height: 550px;
   }
 }
 

@@ -11,25 +11,23 @@ $(document).ready(function() {
             dimPage: !1,
             transition: "push"
         }).sidebar("toggle");
-    }), $("#intro").waypoint(function(direction) {
-        $("nav").toggleClass("fix-navigation");
     }), (new WOW).init();
 
     // the "Last Work" grid is now rendered at build time by gulp-file-include
     // (see app/partials/last-work.html + lastwork-item.html), so it only
     // needs lazyload wired up here, not built from the `lastwork` object.
     $("img.lazy").lazyload();
-});
 
-window.onscroll = function() {myFunction();};
-
-var header = document.getElementById("home-menu");
-var sticky = header.offsetTop;
-
-function myFunction() {
-    if (window.pageYOffset > sticky) {
-        header.classList.add("fixed-bar");
-    } else {
-        header.classList.remove("fixed-bar");
+    // Single source of truth for the navbar's transparent<->solid state:
+    // stay transparent for the whole hero background, switch to solid
+    // only once it's been scrolled past (i.e. the next section is what's
+    // behind the fixed nav), symmetric in both scroll directions.
+    var $nav = $("nav.navbar");
+    var $hero = $("#homepage");
+    function toggleFixNav() {
+        $nav.toggleClass("fix-navigation", window.scrollY > $hero.outerHeight());
     }
-}
+    $(window).on("scroll", toggleFixNav);
+    $(window).on("resize", toggleFixNav);
+    toggleFixNav();
+});

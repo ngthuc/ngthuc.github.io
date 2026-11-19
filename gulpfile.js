@@ -16,6 +16,41 @@ var sharp = require('sharp');
 var fs = require('fs');
 var path = require('path');
 
+// Generates the Work Experience / Education include lines from
+// src/data/experience.json, sorted most-recent-first (an open-ended
+// "end" sorts as the most recent) and capped to the 3 latest per group —
+// adding a new job/degree only ever means adding one entry to that JSON.
+var MONTH_ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function formatYearMonth(ym) {
+	var parts = ym.split('-');
+	return MONTH_ABBR[parseInt(parts[1], 10) - 1] + ' ' + parts[0];
+}
+
+function experienceSortKey(entry) {
+	// an ongoing entry (end: null) must sort as more recent than any
+	// finished one, regardless of how far in the past it started
+	return entry.end || '9999-99';
+}
+
+function renderExperienceGroup(entries) {
+	var top3 = entries.slice().sort(function (a, b) {
+		return experienceSortKey(b).localeCompare(experienceSortKey(a));
+	}).slice(0, 3);
+
+	return top3.map(function (entry) {
+		var time = formatYearMonth(entry.start) + ' - ' + (entry.end ? formatYearMonth(entry.end) : 'present');
+		return "@@include('./ex-item.html', " + JSON.stringify({heading: entry.heading, time: time, desc: entry.desc}) + ')';
+	}).join('\n');
+}
+
+gulp.task('experience', function (done) {
+	var data = JSON.parse(fs.readFileSync('./src/data/experience.json', 'utf8'));
+	fs.writeFileSync('./src/partials/_experience-work.generated.html', renderExperienceGroup(data.work) + '\n');
+	fs.writeFileSync('./src/partials/_experience-education.generated.html', renderExperienceGroup(data.education) + '\n');
+	done();
+});
+
 // renameIndex renames the index file and puts it
 // in the root directory
 // gulp.task('renameIndex', ['minIndex'], function () {
@@ -50,12 +85,13 @@ gulp.task('start', function (done) {
 // so browser-sync has a plain HTML file to serve during development.
 // src/index.html is generated — don't hand-edit it, edit production.html
 // and the files under src/partials/ instead.
-gulp.task('html:dev', function () {
-	return gulp.src('./src/production.html')
+gulp.task('html:dev', gulp.series('experience', function (done) {
+	gulp.src('./src/production.html')
 		.pipe(fileInclude({prefix: '@@', basepath: '@file'}))
 		.pipe(rename('index.html'))
-		.pipe(gulp.dest('./src'));
-});
+		.pipe(gulp.dest('./src'))
+		.on('end', done);
+}));
 
 gulp.task('watch', gulp.series('html:dev', function (done) {
 	browserSync({
@@ -68,6 +104,7 @@ gulp.task('watch', gulp.series('html:dev', function (done) {
 	gulp.watch('./src/css/*.less', gulp.series('less')).on('change', browserSync.reload);
 	gulp.watch('./src/js/*.js').on('change', browserSync.reload);
 	gulp.watch('./src/images/lastwork/*.max.*', gulp.series('thumbs')).on('change', browserSync.reload);
+	gulp.watch('./src/data/experience.json', gulp.series('html:dev')).on('change', browserSync.reload);
 	done();
 }));
 
@@ -108,7 +145,7 @@ gulp.task('less', function () {
 //     .pipe(gulp.dest('.'));
 // });
 
-gulp.task('useref', function () {
+gulp.task('useref', gulp.series('experience', function () {
 	return gulp.src('./src/production.html')
 		.pipe(fileInclude({prefix: '@@', basepath: '@file'}))
 		.pipe(rename('index.html'))
@@ -116,7 +153,7 @@ gulp.task('useref', function () {
 		.pipe(gulpIf('./src/*.js', uglify({mangle: false})))
 		.pipe(gulpIf('./src/*.css', cssnano()))
 		.pipe(gulp.dest('./dist'));
-});
+}));
 
 // Generates the Last Work grid thumbnails (*.min.webp) from the full-size
 // screenshot each project ships as *.max.{png,jpg,jpeg}. Adding a new last
