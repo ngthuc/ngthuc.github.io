@@ -1,0 +1,61 @@
+name: Build and deploy to GitHub Pages
+
+on:
+  # Auto-trigger on every push/merge to master
+  push:
+    branches: ["master"]
+  # Manual trigger from the Actions tab — GitHub lets you pick any branch
+  # to run it against from the "Run workflow" dropdown
+  workflow_dispatch:
+
+# Least-privilege permissions for the OIDC-based Pages deployment below
+# (no gh-pages branch, no PAT/contents:write needed)
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deploy at a time; let an in-progress one finish instead of
+# cancelling it mid-publish
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install root dependencies
+        run: npm install --legacy-peer-deps
+
+      # useref resolves bootstrap/jquery/etc. relative to src/, which has
+      # its own package.json/node_modules for those assets
+      - name: Install src/ dependencies
+        run: npm --prefix src install --legacy-peer-deps
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload build output
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
