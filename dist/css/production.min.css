@@ -15211,6 +15211,11 @@ img {
 }
 
 #homepage .homapage-content nav.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
   background: 0 0;
   border: none;
   padding: 10px 0;
@@ -15218,13 +15223,7 @@ img {
 }
 
 #homepage .homapage-content nav.navbar.fix-navigation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
   background: #282d39;
-  width: 100%;
-  border: none;
   box-shadow: 0 2px 10px rgba(0, 0, 0, .2)
 }
 
