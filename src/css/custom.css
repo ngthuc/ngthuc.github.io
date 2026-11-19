@@ -9,13 +9,6 @@
     background-color: #fff;
 }
 
-.fixed-bar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #282D39;
-}
-
 /* .sticky + .content {
   padding-top: 102px;
 } */

@@ -20,16 +20,3 @@ $(document).ready(function() {
     // needs lazyload wired up here, not built from the `lastwork` object.
     $("img.lazy").lazyload();
 });
-
-window.onscroll = function() {myFunction();};
-
-var header = document.getElementById("home-menu");
-var sticky = header.offsetTop;
-
-function myFunction() {
-    if (window.pageYOffset > sticky) {
-        header.classList.add("fixed-bar");
-    } else {
-        header.classList.remove("fixed-bar");
-    }
-}

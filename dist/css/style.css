@@ -145,6 +145,7 @@ img {
   background: 0 0;
   border: none;
   padding: 10px 0;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
 }
 #homepage .homapage-content nav.navbar .navbar-brand {
   font-weight: 700;
@@ -189,6 +190,7 @@ img {
   background: #282d39;
   width: 100%;
   border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 #homepage .home-overlay {
   position: absolute;
