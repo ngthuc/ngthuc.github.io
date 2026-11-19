@@ -12,6 +12,9 @@ var del = require('del');
 var runSequence = require('gulp4-run-sequence');
 var rename = require('gulp-rename');
 var fileInclude = require('gulp-file-include');
+var sharp = require('sharp');
+var fs = require('fs');
+var path = require('path');
 
 // renameIndex renames the index file and puts it
 // in the root directory
@@ -64,6 +67,7 @@ gulp.task('watch', gulp.series('html:dev', function (done) {
 	gulp.watch(['./src/production.html', './src/partials/**/*.html'], gulp.series('html:dev')).on('change', browserSync.reload);
 	gulp.watch('./src/css/*.less', gulp.series('less')).on('change', browserSync.reload);
 	gulp.watch('./src/js/*.js').on('change', browserSync.reload);
+	gulp.watch('./src/images/lastwork/*.max.*', gulp.series('thumbs')).on('change', browserSync.reload);
 	done();
 }));
 
@@ -112,6 +116,31 @@ gulp.task('useref', function () {
 		.pipe(gulpIf('./src/*.js', uglify({mangle: false})))
 		.pipe(gulpIf('./src/*.css', cssnano()))
 		.pipe(gulp.dest('./dist'));
+});
+
+// Generates the Last Work grid thumbnails (*.min.webp) from the full-size
+// screenshot each project ships as *.max.{png,jpg,jpeg}. Adding a new last
+// work only ever means dropping in one *.max.png — this regenerates its
+// resized, webp-converted thumbnail every build, so the hand-made *.min.webp
+// nobody has to keep in sync by hand (and fixes any existing thumbnail,
+// like unipass.min.webp, that was never actually resized down).
+gulp.task('thumbs', function (done) {
+	var dir = './src/images/lastwork';
+	var files = fs.readdirSync(dir).filter(function (file) {
+		return /\.max\.(png|jpe?g)$/i.test(file);
+	});
+
+	Promise.all(files.map(function (file) {
+		var key = file.replace(/\.max\.(png|jpe?g)$/i, '');
+		var input = path.join(dir, file);
+		var output = path.join(dir, key + '.min.webp');
+		return sharp(input)
+			.resize({width: 600, withoutEnlargement: true})
+			.webp({quality: 75})
+			.toFile(output);
+	})).then(function () {
+		done();
+	}, done);
 });
 
 // Optimizing Images
@@ -204,6 +233,7 @@ gulp.task('build', function (callback) {
 		'clean',
 		'less',
 		'useref',
+		'thumbs',
 		['images', 'fonts', 'static-files', 'cname'],
 		callback
 	);
